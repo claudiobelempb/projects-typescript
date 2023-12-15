@@ -1,0 +1,120 @@
+.container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  background-color: var(--gray-600);
+  border-radius: 0.5rem;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.contentTitle h3 {
+  color: var(--gray-100);
+  font-weight: 700;
+}
+
+.contentTitle p {
+  font-size: 0.87rem;
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.box p:first-child {
+  text-align: right;
+  width: 100%;
+  color: var(--gray-400);
+}
+
+.container img {
+  border-radius: 8px;
+  border: 4px solid var(--gray-800);
+  outline: 2px solid var(--green-500);
+  width: calc(3rem+ 12px);
+  height: calc(3rem+ 12px);
+}
+
+.contentText p {
+  color: var(--gray-500);
+  margin: 1rem 0;
+}
+
+.contentLink {
+  margin: 1rem 0;
+}
+
+.contentLink a {
+  text-decoration: none;
+  color: var(--green-500);
+}
+
+.contentTagsList ul {
+  list-style: none;
+  display: flex;
+  column-gap: 1rem;
+}
+
+.contentTagsList li {
+  font-size: 1rem;
+}
+
+.contentTagsList a {
+  text-decoration: none;
+  color: var(--green-500);
+}
+
+.contentSpan {
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray-300);
+  margin: 1rem 0;
+}
+
+.contentForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentForm h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contentForm textarea {
+  background-color: var(--gray-900);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--green-500);
+  margin-bottom: 1.6rem;
+  color: var(--gray-300);
+}
+
+.contentForm textarea::placeholder {
+  color: var(--gray-300);
+}
+
+.contentFormButton {
+  width: 100%;
+}
+
+.contentFormButton button {
+  background-color: var(--green-500);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: var(--white);
+  font-weight: 700;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}

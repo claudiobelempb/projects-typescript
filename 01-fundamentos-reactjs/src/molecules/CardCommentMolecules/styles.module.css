@@ -1,0 +1,53 @@
+.cardCommentContainer strong,
+p {
+  font-size: 0.87rem;
+
+}
+
+.cardCommentContainer strong {
+  color: var(--gray-100);
+}
+
+.cardCommentContainer time {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+
+.cardCommentContainer button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.cardCommentContainer div button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
+  border-radius: 3px;
+
+  color: var(--gray-400);
+
+}
+
+.cardCommentContainer div button:hover {
+  color: var(--green-500);
+}
+
+.cardCommentContainer button svg:hover:first-child {
+  color: var(--red-500);
+}
+
+.cardCommentContainer button div svg:hover:last-child {
+  color: var(--green-500);
+}

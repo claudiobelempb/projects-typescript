@@ -1,0 +1,17 @@
+export type TypeVariant =
+  | 'green_100'
+  | 'green_500'
+  | 'green_700'
+  | 'gray_100'
+  | 'gray_200'
+  | 'gray_300'
+  | 'gray_400'
+  | 'gray_500'
+  | 'gray_600'
+  | 'gray_700'
+  | 'yellow_700'
+  | 'red_500'
+  | 'red_700'
+  | 'white'
+  | 'black'
+  | 'transparent';

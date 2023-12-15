@@ -1,0 +1,93 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 256px;
+  min-height: 294px;
+  background-color: var(--gray-600);
+  border-radius: 8px;
+  margin-top: 2rem;
+  column-gap: 1rem;
+
+}
+
+aside {
+  position: relative;
+}
+
+aside>div::after {
+  content: "";
+  height: 3.5rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('../../assets//background-profile.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.contentProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+
+}
+
+.contentSpan {
+  border-bottom: 1px solid var(--gray-100);
+  width: 100%;
+}
+
+.contentProfile h2 {
+  color: var(--gray-100);
+  font-size: 1rem;
+}
+
+.contentProfile p {
+  font-size: 0.87rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+.contentButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+.contentButton button {
+  width: 12rem;
+  padding: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--green-500);
+  background-color: transparent;
+  color: var(--green-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.contentButton button:hover {
+  background-color: var(--green-700);
+  color: var(--gray-100);
+  font-weight: bold;
+}
+
+.contentButton button svg:hover {
+  color: var(--gray-100);
+}
