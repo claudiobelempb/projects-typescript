@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react';
 import {
   TypeFontFamily,
   TypeFontLineHeight,
@@ -13,6 +13,10 @@ import { TypeBorderStyle } from './TypeBorder';
 import { FlexContainerValue, FlexValue } from './TypeFlex';
 import { TypeTetxAlign, TypeTextTransform } from './TypeText';
 import { TypeVariant } from './TypeVariant';
+
+export type InpuType = typeDefault & InputHTMLAttributes<HTMLInputElement>;
+export type InputRef = HTMLInputElement;
+export type ButtonRef = HTMLButtonElement;
 
 export type typeDefault = {
   as?: React.ElementType | keyof JSX.IntrinsicElements;

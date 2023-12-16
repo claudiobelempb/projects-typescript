@@ -1,10 +1,7 @@
-import { typeDefault } from '@typesDefault/typesDefault';
-import { InputHTMLAttributes } from 'react';
+import { InpuType } from '@typesDefault/typesDefault';
 import styled, { css } from 'styled-components';
 
-type Props = InputHTMLAttributes<HTMLInputElement> & typeDefault;
-
-export const InputAtomsContainer = styled.input<Props>`
+export const InputAtomsContainer = styled.input<InpuType>`
   ${({ theme, ...props }) => css`
     border: none;
     background-color: ${props.$variant?.$vbackgroud
@@ -105,7 +102,7 @@ export const InputAtomsContainer = styled.input<Props>`
     `}
     
     /*Flex */
-    display: ${props.display ? props.display : 'flex'};
+    display: ${props.$display ? props.$display : 'flex'};
     ${props.$flex?.$flex &&
     css`
       flex: ${props.$flex.$flex};
@@ -170,7 +167,7 @@ export const InputAtomsContainer = styled.input<Props>`
       : `${100}%`};
     min-width: ${props.$width?.$minWidth
       ? `${props.$width.$minWidth}rem`
-      : `${5}rem`};
+      : `${4}rem`};
 
     /*HEIGT */
     height: ${props.$height?.$height ? `${props.$height.$height}rem` : `auto`};
@@ -179,7 +176,7 @@ export const InputAtomsContainer = styled.input<Props>`
       : `${100}%`};
     min-height: ${props.$height?.$minHeight
       ? `${props.$height.$minHeight}rem`
-      : `${5}rem`};
+      : `${4}rem`};
 
     /*PADDING */
 

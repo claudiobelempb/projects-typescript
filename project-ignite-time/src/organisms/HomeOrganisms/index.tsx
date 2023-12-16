@@ -5,13 +5,62 @@ import { IconAtom } from '@atoms/IconAtoms';
 import { InputAtoms } from '@atoms/InputAtoms';
 import { LabelAtoms } from '@atoms/LabelAtoms';
 import { TextAtoms } from '@atoms/TextAtoms';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { TimerNumber } from '@molecules/TimerNumber';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useTheme } from 'styled-components';
+import * as zod from 'zod';
 
+const createCycleFormValidaonSchema = zod.object({
+  task: zod.string().min(1, 'Informe a tarefa'),
+  minutesAmount: zod.number().min(5).max(60)
+});
+
+// type TaksType = {
+//   task: string;
+//   minutesAmount: number;
+// };
+
+type TaksType = zod.infer<typeof createCycleFormValidaonSchema>;
+
+type CycleType = {
+  cycleId: string;
+  task: string;
+  minutesAmount: number;
+};
 export function HomeOrganisms() {
   const { variant } = useTheme();
-  const [status, setStatus] = useState(true);
+  const [cycles, setCycles] = useState<CycleType[]>([]);
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
+
+  const { register, handleSubmit, watch, reset } = useForm<TaksType>({
+    resolver: zodResolver(createCycleFormValidaonSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0
+    }
+  });
+
+  function handleCreateCycle(data: TaksType) {
+    const cycleId = String(new Date().getTime());
+    const newCycle: CycleType = {
+      cycleId,
+      task: data.task,
+      minutesAmount: data.minutesAmount
+    };
+    setCycles(prevState => [...prevState, newCycle]);
+    setActiveCycleId(cycleId);
+    console.log(data);
+    reset();
+  }
+
+  const activeCycle = cycles.find(cycle => cycle.cycleId === activeCycleId);
+  console.log(activeCycle);
+
+  const task = watch('task');
+  const isSubmitDisabled = !task;
+
   return (
     <>
       <FormAtoms
@@ -20,6 +69,7 @@ export function HomeOrganisms() {
           $alingItems: 'center',
           $columnGap: 0.5
         }}
+        onSubmit={handleSubmit(handleCreateCycle)}
       >
         <BoxAtoms
           $flex={{
@@ -40,8 +90,8 @@ export function HomeOrganisms() {
               $flex={{ $flex: 1 }}
               placeholder='Dê um nome para o seu projeto'
               $border={{ $borderBottom: { borderColor: 'gray_300' } }}
-              id='task'
               list='task-suggestions'
+              {...register('task', { required: true })}
             />
 
             <datalist id='task-suggestions'>
@@ -59,7 +109,7 @@ export function HomeOrganisms() {
             }}
           >
             <LabelAtoms htmlFor='minutesAmount'>durante</LabelAtoms>
-            <ButtonAtoms $width={{ $minWidth: 5 }}>
+            <ButtonAtoms type='button' $width={{ $minWidth: 5 }}>
               <IconAtom type='FaMinus' />
             </ButtonAtoms>
             <InputAtoms
@@ -72,8 +122,9 @@ export function HomeOrganisms() {
               $text={{ $textAlign: 'center' }}
               id='minutesAmount'
               $width={{ $maxWidth: 6 }}
+              {...register('minutesAmount', { valueAsNumber: true })}
             />
-            <ButtonAtoms $width={{ $minWidth: 5 }}>
+            <ButtonAtoms type='button' $width={{ $minWidth: 5 }}>
               <IconAtom type='FaPlus' />
             </ButtonAtoms>
             <TextAtoms as='span'>minutos</TextAtoms>
@@ -104,9 +155,10 @@ export function HomeOrganisms() {
           <TimerNumber number={0} />
         </BoxAtoms>
 
-        {status ? (
+        {activeCycle ? (
           <ButtonAtoms
-            disabled={false}
+            type='submit'
+            disabled={isSubmitDisabled}
             $flex={{
               $flexDirection: 'row',
               $alingItems: 'center',
@@ -124,6 +176,7 @@ export function HomeOrganisms() {
           </ButtonAtoms>
         ) : (
           <ButtonAtoms
+            type='submit'
             disabled={false}
             $flex={{
               $flexDirection: 'row',

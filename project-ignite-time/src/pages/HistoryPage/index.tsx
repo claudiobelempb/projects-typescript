@@ -1,7 +1,7 @@
 import { HeadingAtoms } from '@atoms/HeadingAtoms';
 import { StatusAtoms } from '@atoms/StatusAtoms';
 import { TableAtoms } from '@atoms/TableAtoms';
-import { BoxAtoms } from './../../atoms/BoxAtoms/index';
+import { BoxAtoms } from './../../atoms/BoxAtoms';
 
 export function HistoryPage() {
   return (
