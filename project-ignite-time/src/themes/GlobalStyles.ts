@@ -91,6 +91,10 @@ export const GlobalStyles = createGlobalStyle`
       display: none !important;
     }
 
+    input:disabled {
+      cursor: not-allowed;
+    }
+
     main {
       display: flex;
       flex: 1 1;
