@@ -1,17 +1,21 @@
-import { ReactNode, createContext, useReducer, useState } from 'react';
+import { CycleType, CyclesReducer } from '@redurcers/cycles/reducer';
+import { differenceInSeconds } from 'date-fns';
+import {
+  ReactNode,
+  createContext,
+  useEffect,
+  useReducer,
+  useState
+} from 'react';
+import {
+  addNewCycleAction,
+  interruptCurrentCycleAction,
+  markCurrentCycleAsFinishedAction
+} from 'redurcers/cycles/actions';
 
 type CreateCycleData = {
   task: string;
   minutesAmount: number;
-};
-
-type CycleType = {
-  cycleId: string;
-  task: string;
-  minutesAmount: number;
-  startDate: Date;
-  endDate?: Date;
-  finishedDate?: Date;
 };
 
 type CycleContextType = {
@@ -31,60 +35,32 @@ type CycleContextProviderProps = {
 
 export const CycleContext = createContext({} as CycleContextType);
 
-type CycleStateType = {
-  cycles: CycleType[];
-  activeCycleId: string | null;
-};
-
 export function CycleContextProvider({ children }: CycleContextProviderProps) {
-  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0);
-
   const [cyclesState, dispatch] = useReducer(
-    (state: CycleStateType, action: any) => {
-      switch (action.type) {
-        case 'ADD_NEW_CYCLE':
-          return {
-            ...state,
-            cycles: [...state.cycles, action.payload.newCycle],
-            activeCycleId: action.payload.newCycle.cycleId
-          };
-        case 'INTERRUPT_CURRENT_CYCLE':
-          return {
-            ...state,
-            cycles: state.cycles.map(cycle => {
-              if (cycle.cycleId === state.activeCycleId) {
-                return { ...cycle, endDate: new Date() };
-              } else {
-                return cycle;
-              }
-            }),
-            activeCycleId: null
-          };
-        case 'MARK_CURRENT_CYCLE_FINISHED':
-          return {
-            ...state,
-            cycles: state.cycles.map(cycle => {
-              if (cycle.cycleId === state.activeCycleId) {
-                return { ...cycle, finishedDate: new Date() };
-              } else {
-                return cycle;
-              }
-            })
-          };
-        default:
-          return state;
-      }
-    },
+    CyclesReducer,
     {
       cycles: [],
       activeCycleId: null
+    },
+    initialState => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@ignite-timer:cycles-storage-v1.0.0'
+      );
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON);
+      }
+
+      return initialState;
     }
   );
-
   const { cycles, activeCycleId } = cyclesState;
-
   const activeCycle = cycles.find(cycle => cycle.cycleId === activeCycleId);
-
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(() => {
+    if (activeCycle) {
+      return differenceInSeconds(new Date(), new Date(activeCycle.startDate));
+    }
+    return 0;
+  });
   function createNewCycle(data: CreateCycleData) {
     const cycleId = String(new Date().getTime());
     const newCycle: CycleType = {
@@ -93,30 +69,26 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
       minutesAmount: data.minutesAmount,
       startDate: new Date()
     };
-    dispatch({
-      type: 'ADD_NEW_CYCLE',
-      payload: { newCycle }
-    });
+    dispatch(addNewCycleAction(newCycle));
     handleAmountSecondsPassed(0);
   }
 
   function interruptCurrentCycle() {
-    dispatch({
-      type: 'INTERRUPT_CURRENT_CYCLE',
-      payload: { activeCycleId }
-    });
+    dispatch(interruptCurrentCycleAction());
   }
 
   function markCurrentCycleAsFinished() {
-    dispatch({
-      type: 'MARK_CURRENT_CYCLE_FINISHED',
-      payload: { activeCycleId }
-    });
+    dispatch(markCurrentCycleAsFinishedAction());
   }
 
   function handleAmountSecondsPassed(second: number) {
     setAmountSecondsPassed(second);
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cyclesState);
+    localStorage.setItem('@ignite-timer:cycles-storage-v1.0.0', stateJSON);
+  }, [cycles, cyclesState]);
 
   return (
     <CycleContext.Provider

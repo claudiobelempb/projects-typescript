@@ -17,6 +17,9 @@
       "@contexts/*": [
         "contexts/*"
       ],
+      "@redurcers/*": [
+        "redurcers/*"
+      ],
       "@atoms/*": [
         "atoms/*"
       ],
