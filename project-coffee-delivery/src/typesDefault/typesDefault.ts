@@ -28,6 +28,8 @@ export type typeDefault = {
   $titleHeading?: string;
   children?: ReactNode;
   $child?: number;
+  $lines?: number;
+  $spacings?: number;
 
   $background?: {
     $background?: COLOR_PROPS;

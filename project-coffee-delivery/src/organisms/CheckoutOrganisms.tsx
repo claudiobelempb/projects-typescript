@@ -27,7 +27,7 @@ export function CheckoutOrganisms() {
           }}
         >
           <BoxAtoms $width={{ $width: 60 }}>
-            <SkeletonLoadingAtoms $lines={1} $height={3} />
+            <SkeletonLoadingAtoms $lines={1} $height={{ $height: 3 }} />
             <HeadingAtoms
               $font={{ $fsize: 'm20', $fweigh: '700', $ffamily: 'Baloo' }}
               $color={{ $subtitle: 'subtitle' }}

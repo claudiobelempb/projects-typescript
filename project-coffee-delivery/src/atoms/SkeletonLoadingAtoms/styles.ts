@@ -1,9 +1,6 @@
+import { ContentAtoms } from '@atoms/ContentAtoms';
 import { typeDefault } from '@typesDefault/typesDefault';
 import styled, { css, keyframes } from 'styled-components';
-
-type Props = {
-  $spacings?: number;
-} & typeDefault;
 
 const animation = keyframes`
   from {
@@ -13,7 +10,7 @@ const animation = keyframes`
     background-position: 135% 0%;
   }
 `;
-export const SketetonContainer = styled.div<Props>`
+export const SketetonContainer = styled.div<typeDefault>`
   ${({ theme, ...props }) => css`
     ${props.$background?.$background &&
     css`
@@ -323,7 +320,7 @@ export const SketetonContainer = styled.div<Props>`
   `}
 `;
 
-export const SketetonContent = styled.div<Props>`
+export const SketetonContent = styled(ContentAtoms)`
   ${({ theme, ...props }) => css`
     width: 100%;
     ${props.$height?.$height &&
@@ -333,12 +330,12 @@ export const SketetonContent = styled.div<Props>`
     opacity: 0.6;
     border-radius: 8px;
     cursor: progress;
-    background: rgb(145, 170, 180);
+    background: ${theme.color[props.$background?.$input || 'yellow700']};
     background: linear-gradient(
       90deg,
-      rgba(145, 170, 180, 1) 0%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(145, 170, 180, 1) 100%
+      ${theme.color.purple700} 0%,
+      ${theme.color.purple100} 50%,
+      ${theme.color.purple700} 100%
     );
     background-size: 400% 400%;
 
