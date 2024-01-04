@@ -6,16 +6,29 @@ export const ContainerTemplatesContainer = styled.div<typeDefault>`
     background-color: ${props.$background?.$background
       ? theme.color[props.$background.$background]
       : theme.color.transparent};
-    ${props.$position &&
+
+    /*POSITION */
+    position: ${props.$position?.position || 'relative'};
+    ${props.$position?.top &&
     css`
-      $position: ${props.$position.position ? 'absolute' : 'relative'};
-      top: ${props.$position.top ? props.$position.top : 0}px;
-      left: ${props.$position.left ? props.$position.left : 0}px;
-      right: ${props.$position.right ? props.$position.right : 0}px;
-      top: ${props.$position.bottom ? props.$position.bottom : 0}px;
-      z-index: ${props.$position.zIndex ? props.$position.zIndex : 0};
+      top: ${props.$position.top}px;
     `}
-    position: relative;
+    ${props.$position?.left &&
+    css`
+      left: ${props.$position.left}px;
+    `}
+    ${props.$position?.right &&
+    css`
+      right: ${props.$position.right}px;
+    `}
+    ${props.$position?.bottom &&
+    css`
+      bottom: ${props.$position.bottom}px;
+    `}
+    ${props.$position?.zIndex &&
+    css`
+      z-index: ${props.$position.zIndex};
+    `}
 
     flex-direction: column;
     /*Flex */
@@ -265,23 +278,21 @@ export const ContainerTemplatesContainer = styled.div<typeDefault>`
     `}
     ${props.$border?.$radiusTopLeft &&
     css`
-      border-top-left-radius: ${props.$border?.$radiusTopLeft
-        .$leftBorderWidth || 8}px;
+      border-top-left-radius: ${props.$border?.$radiusTopLeft.$width || 8}px;
     `}
     ${props.$border?.$radiusTopRight &&
     css`
-      border-top-right-radius: ${props.$border?.$radiusTopRight
-        .$rightBorderWidth || 8}px;
+      border-top-right-radius: ${props.$border?.$radiusTopRight.$width || 8}px;
     `}
     ${props.$border?.$radiusBottomLeft &&
     css`
-      border-bottom-left-radius: ${props.$border?.$radiusBottomLeft
-        .$leftBorderWidth || 8}px;
+      border-bottom-left-radius: ${props.$border?.$radiusBottomLeft.$width ||
+      8}px;
     `}
     ${props.$border?.$radiusBottomRight &&
     css`
-      border-bottom-left-radius: ${props.$border?.$radiusBottomRight
-        .$rightBorderWidth || 8}px;
+      border-bottom-left-radius: ${props.$border?.$radiusBottomRight.$width ||
+      8}px;
     `}
     /* OVERFLOW */
     ${props.$overflow &&

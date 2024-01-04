@@ -6,16 +6,28 @@ export const ContentTemplatesContainer = styled.div<typeDefault>`
     background-color: ${props.$background?.$background
       ? theme.color[props.$background.$background]
       : theme.color.transparent};
-    ${props.$position &&
+    /*POSITION */
+    position: ${props.$position?.position || 'relative'};
+    ${props.$position?.top &&
     css`
-      position: ${props.$position.position ? 'absolute' : 'relative'};
-      top: ${props.$position.top ? props.$position.top : 0}px;
-      left: ${props.$position.left ? props.$position.left : 0}px;
-      right: ${props.$position.right ? props.$position.right : 0}px;
-      top: ${props.$position.bottom ? props.$position.bottom : 0}px;
-      z-index: ${props.$position.zIndex ? props.$position.zIndex : 0};
+      top: ${props.$position.top}px;
     `}
-    position: relative;
+    ${props.$position?.left &&
+    css`
+      left: ${props.$position.left}px;
+    `}
+    ${props.$position?.right &&
+    css`
+      right: ${props.$position.right}px;
+    `}
+    ${props.$position?.bottom &&
+    css`
+      bottom: ${props.$position.bottom}px;
+    `}
+    ${props.$position?.zIndex &&
+    css`
+      z-index: ${props.$position.zIndex};
+    `}
     /* width: 100%; */
     max-width: 1024px;
     margin: 0 auto;
@@ -54,31 +66,31 @@ export const ContentTemplatesContainer = styled.div<typeDefault>`
     `}
       ${props.$flex?.$gap &&
     css`
-      gap: ${props.$flex?.$gap ? props.$flex?.$gap : 0}rem;
+      gap: ${props.$flex?.$gap}rem;
     `}
       ${props.$flex?.$rowGap &&
     css`
-      gap: ${props.$flex?.$rowGap ? props.$flex?.$rowGap : 0}rem;
+      gap: ${props.$flex?.$rowGap}rem;
     `}
       ${props.$flex?.$columnGap &&
     css`
-      gap: ${props.$flex?.$columnGap ? props.$flex?.$columnGap : 0}rem;
+      gap: ${props.$flex?.$columnGap}rem;
     `}
       ${props.$flex?.$order &&
     css`
-      order: ${props.$flex?.$order ? props.$flex?.$order : 0};
+      order: ${props.$flex?.$order};
     `}
       ${props.$flex?.$grow &&
     css`
-      flex-grow: ${props.$flex?.$grow ? props.$flex?.$grow : 0};
+      flex-grow: ${props.$flex?.$grow};
     `}
       ${props.$flex?.$shrink &&
     css`
-      flex-shrink: ${props.$flex?.$shrink ? props.$flex?.$shrink : 0};
+      flex-shrink: ${props.$flex?.$shrink};
     `}
       ${props.$flex?.$basis &&
     css`
-      flex-basis: ${props.$flex?.$basis ? props.$flex?.$basis : 0}rem;
+      flex-basis: ${props.$flex?.$basis}rem;
     `}
       
 
@@ -183,25 +195,19 @@ export const ContentTemplatesContainer = styled.div<typeDefault>`
     `}
     ${props.$space?.$mt &&
     css`
-      margin-top: ${props.$space?.$mt}rem;
+      margin-top: ${theme.space.mt[props.$space?.$mt]}rem;
     `}
     ${props.$space?.$ml &&
     css`
-      margin-left: ${props.$space?.$ml
-        ? theme.space.ml[props.$space?.$ml]
-        : false}rem;
+      margin-left: ${theme.space.ml[props.$space?.$ml]}rem;
     `}
-    ${props.$space?.$pr &&
+    ${props.$space?.$mr &&
     css`
-      margin-right: ${props.$space?.$mr
-        ? theme.space.mr[props.$space?.$mr]
-        : false}rem;
+      margin-right: ${theme.space.mr[props.$space?.$mr]}rem;
     `}
     ${props.$space?.$mb &&
     css`
-      margin-bottom: ${props.$space?.$mb
-        ? theme.space.pb[props.$space?.$mb]
-        : false}rem;
+      margin-bottom: ${theme.space.pb[props.$space?.$mb]}rem;
     `}
     ${props.$space?.$mx &&
     css`

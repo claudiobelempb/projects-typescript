@@ -5,9 +5,12 @@ import { ContainerAtoms } from '@atoms/ContainerAtoms';
 import { ContentAtoms } from '@atoms/ContentAtoms';
 import { IconAtom } from '@atoms/IconAtoms';
 import { ImageAtoms } from '@atoms/ImageAtoms';
+import { NavLinkAtoms } from '@atoms/NavLinkAtoms';
 import { TextAtoms } from '@atoms/TextAtoms';
+import { useCart } from '@hooks/useCard';
 
 export function HeaderMolecules() {
+  const { cart } = useCart();
   return (
     <ContainerAtoms $space={{ $py: 'm24' }}>
       <ContentAtoms
@@ -15,8 +18,10 @@ export function HeaderMolecules() {
         $flex={{ $flexDirection: 'row', $alingItems: 'center' }}
         $height={{ $height: 10 }}
       >
-        <BoxAtoms>
-          <ImageAtoms src={BrandImg} width={85} height={40} />
+        <BoxAtoms $width={{ $maxWidth: 10 }}>
+          <NavLinkAtoms to='/'>
+            <ImageAtoms src={BrandImg} width={85} height={40} />
+          </NavLinkAtoms>
         </BoxAtoms>
         <BoxAtoms
           $flex={{
@@ -36,7 +41,9 @@ export function HeaderMolecules() {
           >
             <IconAtom type='FaMapMarkerAlt' />
           </ButtonAtoms>
-          <ButtonAtoms
+          <NavLinkAtoms
+            to={`checkout`}
+            aria-disabled={cart?.length === 0}
             $background={{ $background: 'yellow100', $hover: 'yellow500' }}
             $color={{ $text: 'yellow700', $hover: 'white' }}
             $width={{ $maxWidth: 3.8 }}
@@ -62,10 +69,10 @@ export function HeaderMolecules() {
                 $text={{ $textAlign: 'center' }}
                 $width={{ $minWidth: 3 }}
               >
-                3
+                {cart?.length > 0 ? <span>{cart.length}</span> : null}
               </TextAtoms>
             </BoxAtoms>
-          </ButtonAtoms>
+          </NavLinkAtoms>
         </BoxAtoms>
       </ContentAtoms>
     </ContainerAtoms>

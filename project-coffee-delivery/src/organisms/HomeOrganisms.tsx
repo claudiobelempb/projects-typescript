@@ -9,6 +9,8 @@ import { TextAtoms } from '@atoms/TextAtoms';
 import CofferImg from '@assets/coffer.svg';
 import { CardProductMolecules } from '@molecules/CardProductMolecules';
 
+import { coffees } from '../../data.json';
+
 export function HomeOrganisms() {
   return (
     <ContainerAtoms $space={{ $py: 'm24' }}>
@@ -129,21 +131,17 @@ export function HomeOrganisms() {
         </BoxAtoms>
       </ContentAtoms>
       <ContentAtoms
-        $space={{ $px: 'l32' }}
+        $space={{ $mt: 'x48' }}
         $flex={{
           $flexDirection: 'row',
-          $gap: 3,
+          $rowGap: 3,
           $flexWrap: 'wrap',
           $justifyContent: 'center'
         }}
       >
-        <CardProductMolecules />
-        <CardProductMolecules />
-        <CardProductMolecules />
-        <CardProductMolecules />
-        <CardProductMolecules />
-        <CardProductMolecules />
-        <CardProductMolecules />
+        {coffees.map(coffee => (
+          <CardProductMolecules key={coffee.id} coffee={coffee} />
+        ))}
       </ContentAtoms>
     </ContainerAtoms>
   );

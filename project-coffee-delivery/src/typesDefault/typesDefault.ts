@@ -178,6 +178,8 @@ export type typeDefault = {
   $isBorder?: boolean;
   $isBorderRadius?: boolean;
   $isDisabled?: boolean;
+  $isError?: boolean;
+  $error?: string;
 
   $border?: {
     $border?: {
