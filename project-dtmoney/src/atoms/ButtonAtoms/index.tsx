@@ -1,19 +1,20 @@
-import { typeDefault } from '@typesDefault/typesDefault';
-import { HTMLProps, forwardRef } from 'react';
+import { IconAtom } from '@atoms/IconAtoms';
+import { TextAtoms } from '@atoms/TextAtoms';
+import { TypeButtom } from '@typesDefault/TypeButtom';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import { Container } from './styles';
 
-type ButtonProps = {
-  btntitle?: string;
-} & HTMLProps<HTMLButtonElement> &
-  typeDefault;
+type ButtonProps = TypeButtom & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ButtonAtoms = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ ...props }, ref) => {
+  ({ ...props }: ButtonProps, ref) => {
     return (
       <>
-        <Container {...props} ref={ref}>
-          {props.children}
-          {props.btntitle && <span>{props.btntitle}</span>}
+        <Container {...props} ref={ref} disabled={props.$buttom?.$disabled}>
+          {props.$buttom?.$icons && <IconAtom $icons={props.$buttom.$icons} />}
+          {props.$buttom?.$title && (
+            <TextAtoms>{props.$buttom?.$title}</TextAtoms>
+          )}
         </Container>
       </>
     );

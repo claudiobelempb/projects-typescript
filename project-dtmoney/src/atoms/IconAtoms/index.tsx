@@ -10,26 +10,14 @@ export type IconWeight =
   | 'fill'
   | 'duotone';
 
-export type IconType =
-  | 'ArrowCircleUp'
-  | 'ArrowCircleDown'
-  | 'CurrencyDollar'
-  | 'X'
-  | 'TagSimple'
-  | 'CalendarBlank'
-  | 'CaretRight'
-  | 'CaretLeft'
-  | 'MagnifyingGlass';
-
 export function IconAtom({ ...props }: typeDefault) {
   const { colors } = useTheme();
-
   switch (props.$icons?.$type) {
     case 'ArrowCircleUp':
       return (
         <icon.ArrowCircleUp
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'green100']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -38,7 +26,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.ArrowCircleDown
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'red500']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -47,7 +35,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.CurrencyDollar
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'white']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -56,7 +44,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.X
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'placeholder']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -65,7 +53,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.TagSimple
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'placeholder']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -74,7 +62,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.CalendarBlank
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'placeholder']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -83,7 +71,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.CaretRight
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'title']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -92,7 +80,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.CaretLeft
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'title']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -101,7 +89,7 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.MagnifyingGlass
           size={props.$icons?.$size}
-          color={colors[props.$icons?.$color || 'title']}
+          color={colors[props.$icons.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
           type={props.$icons.$type}
         />
@@ -111,8 +99,9 @@ export function IconAtom({ ...props }: typeDefault) {
       return (
         <icon.Activity
           size={props.$icons?.$size}
-          color={props.$icons?.$color}
+          color={colors[props.$icons?.$colors?.$color || 'gray100']}
           weight={props.$icons?.$weight}
+          type={props.$icons?.$type}
         />
       );
   }

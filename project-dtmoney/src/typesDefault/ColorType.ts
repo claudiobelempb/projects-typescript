@@ -38,3 +38,105 @@ export const COLOR = {
 } as const;
 
 export type COLOR_PROPS = keyof typeof COLOR;
+
+export type BACKGROUND_TYPE_PROPS = {
+  $background?: COLOR_PROPS;
+  $hover?: COLOR_PROPS;
+  $text?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $buttom?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $input?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $placeholder?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $icon?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $active?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $seleted?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $success?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $warning?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $error?: {
+    $background?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+};
+
+export type COLOR_TYPE_PROPS = {
+  $color?: COLOR_PROPS;
+  $hover?: COLOR_PROPS;
+  $text?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $buttom?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $input?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $placeholder?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $icon?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $active?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $seleted?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $success?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $warning?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+  $error?: {
+    $colors?: COLOR_PROPS;
+    $hover?: COLOR_PROPS;
+  };
+};
+
+export type TYPE_COLOR_PROPS = keyof typeof COLOR;
+
+export type TYPE_BACKGROUND = {
+  $background?: TYPE_COLOR_PROPS;
+  $hover?: TYPE_COLOR_PROPS;
+};
+
+export type TYPE_COLOR = {
+  $color?: TYPE_COLOR_PROPS;
+  $hover?: TYPE_COLOR_PROPS;
+};

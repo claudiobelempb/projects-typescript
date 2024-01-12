@@ -1,45 +1,89 @@
-import { typeDefault } from '@typesDefault/typesDefault';
+import { TypeButtom } from '@typesDefault/TypeButtom';
 import styled, { css } from 'styled-components';
 
-export const Container = styled.button<typeDefault>`
+export const Container = styled.button<TypeButtom>`
   ${({ theme, ...props }) => css`
     border: none;
 
     cursor: pointer;
 
-    ${props.$background?.$background &&
+    ${props.$buttom?.$background?.$color?.$color &&
     css`
-      background-color: ${theme.colors[props.$background.$background]};
+      background-color: ${theme.colors[
+        props.$buttom?.$background.$color.$color || 'transparent'
+      ]};
     `}
 
-    ${props.$colors?.$colors &&
+    ${props.$buttom?.$selected?.$active &&
     css`
-      color: ${theme.colors[props.$colors.$colors]};
+      background-color: ${theme.colors.green700} !important;
+      color: ${theme.colors.white} !important;
+      & svg {
+        fill: ${theme.colors.white} !important;
+      }
     `}
-    font-size: ${props.$fonts?.$size
-      ? theme.fonts.size[props.$fonts.$size]
-      : theme.fonts.size.m24}rem;
-    /* BORDER */
-    ${props.$border?.$border &&
+
+    ${props.$buttom?.$selected?.$disabled &&
     css`
-      border: ${props.$border?.$border.$borderWidth || 1}px
-        ${props.$border?.$border.$borderStyle || 'solid'}
-        ${props.$border.$border.$borderColor
-          ? theme.colors[props.$border.$border.$borderColor]
-          : theme.colors.transparent};
+      background-color: ${theme.colors.red700} !important;
+      color: ${theme.colors.white} !important;
+      & svg {
+        fill: ${theme.colors.white} !important;
+      }
+    `}
+
+    ${props.$buttom?.$colors?.$active?.$color &&
+    css`
+      background-color: ${theme.colors[
+        props.$buttom?.$colors.$active.$color || 'transparent'
+      ]};
+    `}
+
+    ${props.$buttom?.$colors?.$color?.$color &&
+    css`
+      color: ${theme.colors[
+        props.$buttom?.$colors.$color.$color || 'transparent'
+      ]};
+    `}
+
+    ${props.$buttom?.$colors?.$icon?.$color &&
+    css`
+      & svg {
+        fill: ${theme.colors[
+          props.$buttom?.$colors?.$icon?.$color || 'transparent'
+        ]};
+      }
     `}
 
     &:hover {
-      color: ${theme.colors[props.$colors?.$hover || 'white']};
-      background-color: ${theme.colors[
-        props.$background?.$hover || 'transparent'
+      color: ${theme.colors[
+        props.$buttom?.$colors?.$color?.$hover || 'transparent'
       ]};
+      & svg {
+        fill: ${theme.colors[
+          props.$buttom?.$colors?.$icon?.$hover || 'transparent'
+        ]};
+      }
+      background-color: ${theme.colors[
+        props.$buttom?.$background?.$color?.$color || 'transparent'
+      ]};
+      background-color: ${theme.colors[
+        props.$buttom?.$background?.$active?.$color || 'transparent'
+      ]};
+      transition: background-color 0.2s;
     }
 
     &:not(:disabled):hover {
-      color: ${theme.colors[props.$colors?.$hover || 'white']};
+      color: ${theme.colors[
+        props.$buttom?.$colors?.$color?.$hover || 'transparent'
+      ]};
+      & svg {
+        fill: ${theme.colors[
+          props.$buttom?.$colors?.$icon?.$hover || 'transparent'
+        ]};
+      }
       background-color: ${theme.colors[
-        props.$background?.$hover || 'transparent'
+        props.$buttom?.$background?.$color?.$hover || 'transparent'
       ]};
     }
 
@@ -47,300 +91,339 @@ export const Container = styled.button<typeDefault>`
       opacity: 0.7;
       cursor: not-allowed;
     }
-
-    & span {
-      font-size: 1.4rem;
-      color: inherit;
-      &:hover {
-        color: inherit;
-      }
+    /* 
+    &[data-state='unchecked']:hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.green700};
+      transition: background-color 0.2s;
     }
+
+    &[data-state='checked'] {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.green700};
+    }
+
+    &[data-state='unchecked'] {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.red700};
+    } */
+
+    font-size: ${props.$buttom?.$fonts?.$size}rem;
+
+    /*POSITION */
+    ${props.$buttom?.$position?.$position &&
+    css`
+      position: ${props.$buttom?.$position.$position};
+      top: ${`${props.$buttom?.$position.$top}rem`};
+      left: ${`${props.$buttom?.$position.$left}rem`};
+      right: ${`${props.$buttom?.$position.$right}rem`};
+      bottom: ${`${props.$buttom?.$position.$bottom}rem`};
+      z-index: ${props.$buttom?.$position.$zIndex};
+    `};
+
+    /* BORDER */
+    ${props.$buttom?.$border?.$border &&
+    css`
+      border: ${props.$buttom?.$border?.$border.$borderWidth || 1}px
+        ${props.$buttom?.$border?.$border.$borderStyle || 'solid'}
+        ${props.$buttom?.$border.$border.$borderColor
+          ? theme.colors[props.$buttom?.$border.$border.$borderColor]
+          : theme.colors.transparent};
+    `}
 
     /* BORDER RADIUS */
 
-    border-radius: ${props.$border?.$radius?.$borderWidth
-      ? props.$border?.$radius.$borderWidth
+    border-radius: ${props.$buttom?.$border?.$radius?.$borderWidth
+      ? props.$buttom?.$border?.$radius.$borderWidth
       : 8}px;
 
-    ${props.$text?.$textAlign &&
+    ${props.$buttom?.$text?.$textAlign &&
     css`
-      text-align: ${props.$text.$textAlign};
+      text-align: ${props.$buttom?.$text.$textAlign};
     `}
-    ${props.$fonts?.$fontWeigh &&
+    ${props.$buttom?.$fonts?.$weigh &&
     css`
-      font-weight: ${props.$fonts.$fontWeigh};
+      font-weight: ${props.$buttom?.$fonts.$weigh};
     `}
-    ${props.$fonts?.$family &&
+    ${props.$buttom?.$fonts?.$family &&
     css`
-      font-family: ${theme.fonts.family[props.$fonts.$family]};
+      font-family: ${theme.fonts.family[props.$buttom?.$fonts.$family]};
     `}
 
-    ${props.$fonts?.$dinamic &&
+    ${props.$buttom?.$fonts?.$dinamic &&
     css`
-      font-size: calc(1 * ${props.$fonts.$dinamic}vw);
+      font-size: calc(1 * ${props.$buttom?.$fonts.$dinamic}vw);
     `}
 
     /* SVG */
-
-    & svg {
-      align-items: ${props.$flex?.$alingItems
-        ? props.$flex?.$alingItems
-        : 'center'};
-      align-items: center;
-      width: 100%;
-      height: auto;
-      /* padding: 0.8rem; */
-      max-width: fit-content;
-      /* color: inherit; */
-    }
-
-    /*Flex */
-    display: ${props.$display ? props.$display : 'flex'};
-    ${props.$flex?.$alingItems
+    ${props.$buttom?.$display
       ? css`
-          align-items: ${props.$flex?.$alingItems};
+          display: ${props.$buttom?.$display};
+        `
+      : css`
+          display: flex;
+        `}
+    ${props.$buttom?.$flex?.$alingItems
+      ? css`
+          align-items: ${props.$buttom?.$flex?.$alingItems};
         `
       : css`
           align-items: center;
         `};
-    column-gap: ${props.$flex?.$columnGap ? props.$flex?.$columnGap : 0.5}rem;
+    column-gap: ${props.$buttom?.$flex?.$columnGap
+      ? props.$buttom?.$flex?.$columnGap
+      : 0.5}rem;
 
-    ${props.$flex?.$flex &&
+    ${props.$buttom?.$flex?.$flex &&
     css`
-      flex: ${props.$flex.$flex};
+      flex: ${props.$buttom?.$flex.$flex};
     `}
-    ${props.$flex?.$flexDirection &&
-    css`
-      flex-direction: ${props.$flex?.$flexDirection};
-    `}
-      ${props.$flex?.$justifyContent
+    ${props.$buttom?.$flex?.$direction
       ? css`
-          justify-content: ${props.$flex?.$justifyContent};
+          flex-direction: ${props.$buttom?.$flex?.$direction};
+        `
+      : css`
+          flex-direction: row;
+        `}
+      ${props.$buttom?.$flex?.$justifyContent
+      ? css`
+          justify-content: ${props.$buttom?.$flex?.$justifyContent};
         `
       : css`
           justify-content: center;
         `}
-      ${props.$flex?.$alingContent &&
+      ${props.$buttom?.$flex?.$alingContent &&
     css`
-      align-content: ${props.$flex?.$alingContent};
+      align-content: ${props.$buttom?.$flex?.$alingContent};
     `}
-      ${props.$flex?.$alignSelf &&
+      ${props.$buttom?.$flex?.$alignSelf &&
     css`
-      align-self: ${props.$flex?.$alignSelf};
+      align-self: ${props.$buttom?.$flex?.$alignSelf};
     `}
-      ${props.$flex?.$flexWrap &&
+      ${props.$buttom?.$flex?.$wrap &&
     css`
-      flex-wrap: ${props.$flex?.$flexWrap};
+      flex-wrap: ${props.$buttom?.$flex?.$wrap};
     `}
-      ${props.$flex?.$gap &&
+      ${props.$buttom?.$flex?.$gap &&
     css`
-      gap: ${props.$flex?.$gap ? props.$flex?.$basis : 0}rem;
+      gap: ${props.$buttom?.$flex?.$gap ? props.$buttom?.$flex?.$basis : 0}rem;
     `}
-      ${props.$flex?.$rowGap &&
+      ${props.$buttom?.$flex?.$rowGap &&
     css`
-      gap: ${props.$flex?.$rowGap ? props.$flex?.$rowGap : 0}rem;
+      gap: ${props.$buttom?.$flex?.$rowGap
+        ? props.$buttom?.$flex?.$rowGap
+        : 0}rem;
     `}
       
 
-    ${props.$flex?.$order &&
+    ${props.$buttom?.$flex?.$order &&
     css`
-      order: ${props.$flex?.$order ? props.$flex?.$order : 0};
+      order: ${props.$buttom?.$flex?.$order ? props.$buttom?.$flex?.$order : 0};
     `}
-    ${props.$flex?.$grow &&
+    ${props.$buttom?.$flex?.$grow &&
     css`
-      flex-grow: ${props.$flex?.$grow ? props.$flex?.$grow : 0};
+      flex-grow: ${props.$buttom?.$flex?.$grow
+        ? props.$buttom?.$flex?.$grow
+        : 0};
     `}
-      ${props.$flex?.$shrink &&
+      ${props.$buttom?.$flex?.$shrink &&
     css`
-      flex-shrink: ${props.$flex?.$shrink ? props.$flex?.$shrink : 0};
+      flex-shrink: ${props.$buttom?.$flex?.$shrink
+        ? props.$buttom?.$flex?.$shrink
+        : 0};
     `}
-      ${props.$flex?.$basis &&
+      ${props.$buttom?.$flex?.$basis &&
     css`
-      flex-basis: ${props.$flex?.$basis ? props.$flex?.$basis : 0}rem;
+      flex-basis: ${props.$buttom?.$flex?.$basis
+        ? props.$buttom?.$flex?.$basis
+        : 0}rem;
     `}
     
     /*WIDTH */
-    ${props.$width?.$width
+    ${props.$buttom?.$width?.$width
       ? css`
-          width: ${props.$width?.$width}rem;
+          width: ${props.$buttom?.$width?.$width}rem;
         `
       : css`
           width: 100%;
         `}
-    ${props.$width?.$maxWidth &&
+    ${props.$buttom?.$width?.$maxWidth &&
     css`
-      max-width: ${props.$width?.$maxWidth}rem;
+      max-width: ${props.$buttom?.$width?.$maxWidth}rem;
     `}
-    ${props.$width?.$minWidth &&
+    ${props.$buttom?.$width?.$minWidth &&
     css`
-      min-width: ${props.$width?.$minWidth}rem;
+      min-width: ${props.$buttom?.$width?.$minWidth}rem;
     `}
     
     /*HEIGT */
-    ${props.$height?.$height &&
+    ${props.$buttom?.$height?.$height &&
     css`
-      height: ${props.$height?.$height}vh;
+      height: ${props.$buttom?.$height?.$height}vh;
     `}
-    ${props.$height?.$maxHeight &&
+    ${props.$buttom?.$height?.$maxHeight &&
     css`
-      max-height: ${props.$height?.$maxHeight}rem;
+      max-height: ${props.$buttom?.$height?.$maxHeight}rem;
     `}
-    ${props.$height?.$minHeight &&
+    ${props.$buttom?.$height?.$minHeight &&
     css`
-      min-height: ${props.$height?.$minHeight}rem;
+      min-height: ${props.$buttom?.$height?.$minHeight}rem;
     `}
      
  
      /*PADDING */
-     ${props.$spacings?.$p &&
+     ${props.$buttom?.$spacings?.$p &&
     css`
-      padding: ${theme.spacings[props.$spacings?.$p]}rem;
+      padding: ${props.$buttom?.$spacings?.$p}rem;
     `}
-    ${props.$spacings?.$pt &&
+    ${props.$buttom?.$spacings?.$pt &&
     css`
-      padding-top: ${theme.spacings[props.$spacings?.$pt]}rem;
+      padding-top: ${props.$buttom?.$spacings?.$pt}rem;
     `}
-    ${props.$spacings?.$pl &&
+    ${props.$buttom?.$spacings?.$pl &&
     css`
-      padding-left: ${theme.spacings[props.$spacings?.$pl]}rem;
+      padding-left: ${props.$buttom?.$spacings?.$pl}rem;
     `}
-    ${props.$spacings?.$pr &&
+    ${props.$buttom?.$spacings?.$pr &&
     css`
-      padding-right: ${theme.spacings[props.$spacings?.$pr]}rem;
+      padding-right: ${props.$buttom?.$spacings?.$pr}rem;
     `}
-    ${props.$spacings?.$pb &&
+    ${props.$buttom?.$spacings?.$pb &&
     css`
-      padding-bottom: ${theme.spacings[props.$spacings?.$pb]}rem;
+      padding-bottom: ${props.$buttom?.$spacings?.$pb}rem;
     `}
-    ${props.$spacings?.$px &&
+    ${props.$buttom?.$spacings?.$px &&
     css`
-      padding: ${theme.spacings[props.$spacings.$px]}rem;
+      padding: ${props.$buttom?.$spacings.$px}rem;
     `}
-    ${props.$spacings?.$py &&
+    ${props.$buttom?.$spacings?.$py &&
     css`
-      padding: 0rem ${theme.spacings[props.$spacings.$py]}rem;
+      padding: 0rem ${props.$buttom?.$spacings.$py}rem;
     `}
-    ${props.$spacings?.$pd &&
+    ${props.$buttom?.$spacings?.$pd &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pd]}vw);
+      padding: calc(1 * ${props.$buttom?.$spacings.$pd}vw);
     `}
-    ${props.$spacings?.$pdx &&
+    ${props.$buttom?.$spacings?.$pdx &&
     css`
-      padding: 0rem calc(1 * ${theme.spacings[props.$spacings.$pdx]}vw);
+      padding: 0rem calc(1 * ${props.$buttom?.$spacings.$pdx}vw);
     `}
-    ${props.$spacings?.$pdy &&
+    ${props.$buttom?.$spacings?.$pdy &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pdy]}vw) 0rem;
+      padding: calc(1 * ${props.$buttom?.$spacings.$pdy}vw) 0rem;
     `}
 
     /*MARGIN */
-    ${props.$spacings?.$m &&
+    ${props.$buttom?.$spacings?.$m &&
     css`
-      margin: ${theme.spacings[props.$spacings?.$m]}rem;
+      margin: ${props.$buttom?.$spacings?.$m}rem;
     `}
-    ${props.$spacings?.$mt &&
+    ${props.$buttom?.$spacings?.$mt &&
     css`
-      margin-top: ${theme.spacings[props.$spacings?.$mt]}rem;
+      margin-top: ${props.$buttom?.$spacings?.$mt}rem;
     `}
-    ${props.$spacings?.$ml &&
+    ${props.$buttom?.$spacings?.$ml &&
     css`
-      margin-left: ${theme.spacings[props.$spacings?.$ml]}rem;
+      margin-left: ${props.$buttom?.$spacings?.$ml}rem;
     `}
-    ${props.$spacings?.$mr &&
+    ${props.$buttom?.$spacings?.$mr &&
     css`
-      margin-right: ${theme.spacings[props.$spacings?.$mr]}rem;
+      margin-right: ${props.$buttom?.$spacings?.$mr}rem;
     `}
-    ${props.$spacings?.$mb &&
+    ${props.$buttom?.$spacings?.$mb &&
     css`
-      margin-bottom: ${theme.spacings[props.$spacings?.$mb]}rem;
+      margin-bottom: ${props.$buttom?.$spacings?.$mb}rem;
     `}
-    ${props.$spacings?.$mx &&
+    ${props.$buttom?.$spacings?.$mx &&
     css`
-      margin: ${theme.spacings[props.$spacings.$mx]}rem 0rem;
+      margin: ${props.$buttom?.$spacings.$mx}rem 0rem;
     `}
-    ${props.$spacings?.$my &&
+    ${props.$buttom?.$spacings?.$my &&
     css`
-      margin: 0rem ${theme.spacings[props.$spacings.$my]}rem;
+      margin: 0rem ${props.$buttom?.$spacings.$my}rem;
     `}
-    ${props.$spacings?.$md &&
+    ${props.$buttom?.$spacings?.$md &&
     css`
-      p: calc(1 * ${theme.spacings[props.$spacings.$md]}vw);
+      p: calc(1 * ${props.$buttom?.$spacings.$md}vw);
     `}
-    ${props.$spacings?.$mdx &&
+    ${props.$buttom?.$spacings?.$mdx &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdx]}vw) 0rem;
+      margin: calc(1 * ${props.$buttom?.$spacings.$mdx}vw) 0rem;
     `}
-    ${props.$spacings?.$mdy &&
+    ${props.$buttom?.$spacings?.$mdy &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdy]}vw) 0rem;
+      margin: calc(1 * ${props.$buttom?.$spacings.$mdy}vw) 0rem;
     `}
 
     /* BORDER */
-    ${props.$border?.$border &&
+    ${props.$buttom?.$border?.$border &&
     css`
-      border: ${props.$border?.$border.$borderWidth || 1}px
-        ${props.$border?.$border.$borderStyle || 'solid'}
-        ${props.$border.$border.$borderColor
-          ? theme.colors[props.$border.$border.$borderColor]
+      border: ${props.$buttom?.$border?.$border.$borderWidth || 1}px
+        ${props.$buttom?.$border?.$border.$borderStyle || 'solid'}
+        ${props.$buttom?.$border.$border.$borderColor
+          ? theme.colors[props.$buttom?.$border.$border.$borderColor]
           : theme.colors.transparent};
     `}
-    ${props.$border?.$borderTop &&
+    ${props.$buttom?.$border?.$borderTop &&
     css`
-      border-top: ${props.$border?.$borderTop.$borderWidth || 1}px
-        ${props.$border?.$borderTop.$borderStyle || 'solid'}
-        ${props.$border.$borderTop.$borderColor
-          ? theme.color[props.$border.$borderTop.$borderColor]
+      border-top: ${props.$buttom?.$border?.$borderTop.$borderWidth || 1}px
+        ${props.$buttom?.$border?.$borderTop.$borderStyle || 'solid'}
+        ${props.$buttom?.$border.$borderTop.$borderColor
+          ? theme.color[props.$buttom?.$border.$borderTop.$borderColor]
           : theme.color.transparent};
     `}
-    ${props.$border?.$borderLeft &&
+    ${props.$buttom?.$border?.$borderLeft &&
     css`
-      border-left: ${props.$border?.$borderLeft.$borderWidth || 1}px
-        ${props.$border?.$borderLeft.$borderStyle || 'solid'}
-        ${props.$border.$borderLeft.$borderColor
-          ? theme.color[props.$border.$borderLeft.$borderColor]
+      border-left: ${props.$buttom?.$border?.$borderLeft.$borderWidth || 1}px
+        ${props.$buttom?.$border?.$borderLeft.$borderStyle || 'solid'}
+        ${props.$buttom?.$border.$borderLeft.$borderColor
+          ? theme.color[props.$buttom?.$border.$borderLeft.$borderColor]
           : theme.color.transparent};
     `}
-    ${props.$border?.$borderRight &&
+    ${props.$buttom?.$border?.$borderRight &&
     css`
-      border-right: ${props.$border?.$borderRight.$borderWidth || 1}px
-        ${props.$border?.$borderRight.$borderStyle || 'solid'}
-        ${props.$border.$borderRight.$borderColor
-          ? theme.color[props.$border.$borderRight.$borderColor]
+      border-right: ${props.$buttom?.$border?.$borderRight.$borderWidth || 1}px
+        ${props.$buttom?.$border?.$borderRight.$borderStyle || 'solid'}
+        ${props.$buttom?.$border.$borderRight.$borderColor
+          ? theme.color[props.$buttom?.$border.$borderRight.$borderColor]
           : theme.color.transparent};
     `}
-    ${props.$border?.$borderBottom &&
+    ${props.$buttom?.$border?.$borderBottom &&
     css`
-      border-bottom: ${props.$border?.$borderBottom.$borderWidth || 1}px
-        ${props.$border?.$borderBottom.$borderStyle || 'solid'}
-        ${props.$border.$borderBottom.$borderColor
-          ? theme.color[props.$border.$borderBottom.$borderColor]
+      border-bottom: ${props.$buttom?.$border?.$borderBottom.$borderWidth ||
+        1}px
+        ${props.$buttom?.$border?.$borderBottom.$borderStyle || 'solid'}
+        ${props.$buttom?.$border.$borderBottom.$borderColor
+          ? theme.color[props.$buttom?.$border.$borderBottom.$borderColor]
           : theme.color.transparent};
     `}
     /* BORDER RADIUS */
-    ${props.$border?.$radius
+    ${props.$buttom?.$border?.$radius
       ? css`
-          border-radius: ${props.$border?.$radius.$borderWidth}px;
+          border-radius: ${props.$buttom?.$border?.$radius.$borderWidth}px;
         `
       : css`
           border-radius: 8px;
         `}
-    ${props.$border?.$radiusTopLeft &&
+    ${props.$buttom?.$border?.$radiusTopLeft &&
     css`
-      border-top-left-radius: ${props.$border?.$radiusTopLeft.$width || 8}px;
-    `}
-    ${props.$border?.$radiusTopRight &&
-    css`
-      border-top-right-radius: ${props.$border?.$radiusTopRight.$width || 8}px;
-    `}
-    ${props.$border?.$radiusBottomLeft &&
-    css`
-      border-bottom-left-radius: ${props.$border?.$radiusBottomLeft.$width ||
+      border-top-left-radius: ${props.$buttom?.$border?.$radiusTopLeft.$width ||
       8}px;
     `}
-    ${props.$border?.$radiusBottomRight &&
+    ${props.$buttom?.$border?.$radiusTopRight &&
     css`
-      border-bottom-left-radius: ${props.$border?.$radiusBottomRight.$width ||
-      8}px;
+      border-top-right-radius: ${props.$buttom?.$border?.$radiusTopRight
+        .$width || 8}px;
+    `}
+    ${props.$buttom?.$border?.$radiusBottomLeft &&
+    css`
+      border-bottom-left-radius: ${props.$buttom?.$border?.$radiusBottomLeft
+        .$width || 8}px;
+    `}
+    ${props.$buttom?.$border?.$radiusBottomRight &&
+    css`
+      border-bottom-left-radius: ${props.$buttom?.$border?.$radiusBottomRight
+        .$width || 8}px;
     `}
   `}
 `;

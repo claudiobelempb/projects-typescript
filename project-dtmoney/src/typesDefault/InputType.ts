@@ -1,22 +1,17 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
-import { TYPE_FONT } from './TypeFonts';
-import { TYPE_SPACINGS } from './TypeSpace';
-
-import { BACKGROUND_TYPE_PROPS, COLOR_TYPE_PROPS } from './ColorType';
+import React, { ReactNode } from 'react';
+import { TYPE_BACKGROUND, TYPE_COLOR } from './ColorType';
 import { TYPE_ICON } from './IconType';
 import { TYPE_BORDER } from './TypeBorder';
 import { TYPE_FLEX } from './TypeFlex';
+import { TYPE_FONT } from './TypeFonts';
 import { TYPE_GRYD } from './TypeGrid';
 import { TYPE_HEIGHT } from './TypeHeight';
+import { TYPE_SPACINGS } from './TypeSpace';
 import { TYPE_TEXT } from './TypeText';
 import { TYPE_WIDTH } from './TypeWidth';
 import { TYPE_POSITION } from './typePosition';
 
-export type InpuType = typeDefault & InputHTMLAttributes<HTMLInputElement>;
-export type InputRef = HTMLInputElement;
-export type ButtonRef = HTMLButtonElement;
-
-export type typeDefault = {
+export type InputType = {
   as?: React.ElementType | keyof JSX.IntrinsicElements;
   $name?: string;
   $mensagem?: string;
@@ -29,50 +24,44 @@ export type typeDefault = {
   $lines?: number;
 
   $icons?: TYPE_ICON;
-
-  $background?: BACKGROUND_TYPE_PROPS;
-
-  $colors?: COLOR_TYPE_PROPS;
-
+  /**BACKGROUND */
+  $background?: TYPE_BACKGROUND;
+  /**COLOR */
+  $color?: TYPE_COLOR;
   /**FONTS */
   $fonts?: TYPE_FONT;
-  /**SPACE */
+  /**SPACINGS */
   $spacings?: TYPE_SPACINGS;
-
+  /**POSITION */
   $position?: TYPE_POSITION;
   /**TEXTS */
-
   $text?: TYPE_TEXT;
   $unit?: 'px' | '%' | 'rem' | 'vw' | 'vh';
-  //value?: number;
+  /**WIDTH */
   $width?: TYPE_WIDTH;
+  /**HEIGHT */
   $height?: TYPE_HEIGHT;
-  $isWidth?: boolean;
-  $isHeight?: boolean;
-  $isHover?: boolean;
-
+  /**BOOLEAM */
   $isActive?: boolean;
   $isIcon?: boolean;
   $isIconLeft?: boolean;
   $isIconRight?: boolean;
-  $isBorder?: boolean;
-  $isBorderRadius?: boolean;
-  $isDisabled?: boolean;
+  $disabled?: boolean;
+  /**ERROR */
   $isError?: boolean;
   $error?: string;
-
+  /**BORDER */
   $border?: TYPE_BORDER;
-
-  // OVERFLOW
+  /**OVERFLOW */
   $overflow?: 'scroll' | 'hidden' | 'auto' | 'cli' | 'visible';
   $overflowX?: 'scroll' | 'hidden' | 'auto' | 'cli' | 'visible';
   $overflowY?: 'scroll' | 'hidden' | 'auto' | 'cli' | 'visible';
-
+  /**DISPLAY */
   $display?: 'flex' | 'grid';
-  /*Displa Flex Container */
+  /**FLEX BOX */
   $flex?: TYPE_FLEX;
-
+  /**GRID CSS */
   $grid?: TYPE_GRYD;
-
+  /**OPACITY */
   $opacity?: number;
 };

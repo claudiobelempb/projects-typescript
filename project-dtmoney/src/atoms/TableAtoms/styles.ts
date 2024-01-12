@@ -3,30 +3,26 @@ import styled, { css } from 'styled-components';
 
 export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
   ${({ theme, ...props }) => css`
-    width: 100%;
     margin: 0 0 2em 0;
     border-collapse: collapse;
+    border-spacing: 0.5rem;
     /* background-color: beige; */
     text-align: left;
-    ${props.$colors?.$colors &&
+    ${props.$colors?.$color &&
     css`
-      color: ${theme.colors[props.$colors.$colors]};
+      color: ${theme.colors[props.$colors.$color]};
     `}
     ${props.$fonts?.$size &&
     css`
-      font-size: ${props.$fonts?.$size
-        ? theme.fonts.size[props.$fonts?.$size]
-        : theme.fonts.size.m24}rem;
+      font-size: ${props.$fonts?.$size}rem;
     `}
     ${props.$text?.$textAlign &&
     css`
       text-align: ${props.$text?.$textAlign};
     `}
-    ${props.$fonts?.$fontWeigh &&
+    ${props.$fonts?.$weigh &&
     css`
-      font-weight: ${props.$fonts?.$fontWeigh
-        ? props.$fonts?.$fontWeigh
-        : '400'};
+      font-weight: ${props.$fonts?.$weigh ? props.$fonts?.$weigh : '400'};
     `}
     ${props.$fonts?.$family &&
     css`
@@ -40,85 +36,85 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
      /*PADDING */
      ${props.$spacings?.$p &&
     css`
-      padding: ${theme.spacings[props.$spacings?.$p]}rem;
+      padding: ${props.$spacings?.$p}rem;
     `}
     ${props.$spacings?.$pt &&
     css`
-      padding-top: ${theme.spacings[props.$spacings?.$pt]}rem;
+      padding-top: ${props.$spacings?.$pt}rem;
     `}
     ${props.$spacings?.$pl &&
     css`
-      padding-left: ${theme.spacings[props.$spacings?.$pl]}rem;
+      padding-left: ${props.$spacings?.$pl}rem;
     `}
     ${props.$spacings?.$pr &&
     css`
-      padding-right: ${theme.spacings[props.$spacings?.$pr]}rem;
+      padding-right: ${props.$spacings?.$pr}rem;
     `}
     ${props.$spacings?.$pb &&
     css`
-      padding-bottom: ${theme.spacings[props.$spacings?.$pb]}rem;
+      padding-bottom: ${props.$spacings?.$pb}rem;
     `}
     ${props.$spacings?.$px &&
     css`
-      padding: ${theme.spacings[props.$spacings.$px]}rem;
+      padding: ${props.$spacings.$px}rem;
     `}
     ${props.$spacings?.$py &&
     css`
-      padding: 0rem ${theme.spacings[props.$spacings.$py]}rem;
+      padding: 0rem ${props.$spacings.$py}rem;
     `}
     ${props.$spacings?.$pd &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pd]}vw);
+      padding: calc(1 * ${props.$spacings.$pd}vw);
     `}
     ${props.$spacings?.$pdx &&
     css`
-      padding: 0rem calc(1 * ${theme.spacings[props.$spacings.$pdx]}vw);
+      padding: 0rem calc(1 * ${props.$spacings.$pdx}vw);
     `}
     ${props.$spacings?.$pdy &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pdy]}vw) 0rem;
+      padding: calc(1 * ${props.$spacings.$pdy}vw) 0rem;
     `}
 
     /*MARGIN */
     ${props.$spacings?.$m &&
     css`
-      margin: ${theme.spacings[props.$spacings?.$m]}rem;
+      margin: ${props.$spacings?.$m}rem;
     `}
     ${props.$spacings?.$mt &&
     css`
-      margin-top: ${theme.spacings[props.$spacings?.$mt]}rem;
+      margin-top: ${props.$spacings?.$mt}rem;
     `}
     ${props.$spacings?.$ml &&
     css`
-      margin-left: ${theme.spacings[props.$spacings?.$ml]}rem;
+      margin-left: ${props.$spacings?.$ml}rem;
     `}
     ${props.$spacings?.$mr &&
     css`
-      margin-right: ${theme.spacings[props.$spacings?.$mr]}rem;
+      margin-right: ${props.$spacings?.$mr}rem;
     `}
     ${props.$spacings?.$mb &&
     css`
-      margin-bottom: ${theme.spacings[props.$spacings?.$mb]}rem;
+      margin-bottom: ${props.$spacings?.$mb}rem;
     `}
     ${props.$spacings?.$mx &&
     css`
-      margin: ${theme.spacings[props.$spacings.$mx]}rem 0rem;
+      margin: ${props.$spacings.$mx}rem 0rem;
     `}
     ${props.$spacings?.$my &&
     css`
-      margin: 0rem ${theme.spacings[props.$spacings.$my]}rem;
+      margin: 0rem ${props.$spacings.$my}rem;
     `}
     ${props.$spacings?.$md &&
     css`
-      p: calc(1 * ${theme.spacings[props.$spacings.$md]}vw);
+      p: calc(1 * ${props.$spacings.$md}vw);
     `}
     ${props.$spacings?.$mdx &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdx]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdx}vw) 0rem;
     `}
     ${props.$spacings?.$mdy &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdy]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdy}vw) 0rem;
     `}
 
     thead {
@@ -130,12 +126,9 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
       th {
         /* border: 1px solid #000; */
         width: 100%;
-        background-color: ${props.$table?.$th?.$variant?.$background
-          ? theme.colors[props.$table?.$th?.$variant?.$background]
-          : theme.colors.green700};
-        color: ${props.$table?.$th?.$variant?.$color
-          ? theme.colors[props.$table?.$th?.$variant?.$color]
-          : theme.colors.green500};
+        max-width: 3rem;
+        background-color: ${theme.colors.green700};
+        color: ${theme.colors.green500};
         font-size: ${theme.fonts.size.s14}rem;
         line-height: 1.6;
         padding: 1rem;
@@ -159,17 +152,22 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
 
     tbody {
       padding: 8px 0px 8px 0px;
-
       tr {
-        border-bottom: 1px solid #ccc;
-
-        tr:first-child td {
+        width: 100%;
+        /* border-bottom: 1px solid #ccc; */
+        display: table;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: ${theme.colors.shape100};
+        min-height: 6rem;
+        /* tr:first-child td {
           border-top: 2px solid #666;
+          width: 50%;
         }
 
         tr:last-child td {
           border-bottom: 2px solid #666;
-        }
+        } */
 
         /* Pega as td de uma em uma */
 
@@ -199,29 +197,28 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
             }
           }
         }
-      }
+        td {
+          /* border-top: 4px solid ${theme.colors.yellow700}; */
+          text-align: left;
+          font-size: ${theme.fonts.size.s14}rem;
+          line-height: 1.6;
+          padding: 1rem;
+          /* min-width: 100%;
+          max-width: 100%; */
+          max-width: 3rem;
+          &:first-child {
+            width: 50%;
+            padding-left: 1.5rem;
+          }
 
-      td {
-        background-color: ${theme.colors.shape100};
-        border-top: 4px solid ${theme.colors.yellow700};
-        text-align: left;
-        font-size: ${theme.fonts.size.s14}rem;
-        line-height: 1.6;
-        padding: 1rem;
-
-        &:first-child {
-          width: 50%;
-          padding-left: 1.5rem;
-        }
-
-        &:last-child {
-          padding-right: 1.5rem;
+          &:last-child {
+            padding-right: 1.5rem;
+          }
         }
       }
     }
 
     position: relative;
-    width: 100%;
     height: auto;
     flex-direction: column;
     /*Flex */
@@ -230,9 +227,9 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
     css`
       flex: ${props.$flex.$flex};
     `}
-    ${props.$flex?.$flexDirection &&
+    ${props.$flex?.$direction &&
     css`
-      flex-direction: ${props.$flex?.$flexDirection};
+      flex-direction: ${props.$flex?.$direction};
     `}
     ${props.$flex?.$justifyContent &&
     css`
@@ -250,9 +247,9 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
     css`
       align-self: ${props.$flex?.$alignSelf};
     `}
-    ${props.$flex?.$flexWrap &&
+    ${props.$flex?.$wrap &&
     css`
-      flex-wrap: ${props.$flex?.$flexWrap};
+      flex-wrap: ${props.$flex?.$wrap};
     `}
     ${props.$flex?.$gap &&
     css`
@@ -288,22 +285,31 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
     css`
       width: calc(100vh * ${`${props.$width.$widthDinamic}rem`});
     `}
-    width: ${props.$width?.$width ? `${props.$width.$width}vw` : `${100}vw`};
-    max-width: ${props.$width?.$maxWidth
-      ? `${props.$width.$maxWidth}rem`
-      : `${100}%`};
-    min-width: ${props.$width?.$minWidth
-      ? `${props.$width.$minWidth}rem`
-      : `${5}rem`};
-
+    width: ${props.$width?.$width ? `${props.$width.$width}vw` : `${100}%`};
+    ${props.$width?.$maxWidth &&
+    css`
+      max-width: ${props.$width?.$maxWidth}rem;
+    `}
+    ${props.$width?.$minWidth &&
+    css`
+      min-width: ${props.$width?.$minWidth}rem;
+    `}
+   
+    
     /*HEIGT */
-    height: ${props.$height?.$height ? `${props.$height.$height}vh` : `auto`};
-    max-height: ${props.$height?.$maxHeight
-      ? `${props.$height.$maxHeight}rem`
-      : `${100}%`};
-    min-height: ${props.$height?.$minHeight
-      ? `${props.$height.$minHeight}rem`
-      : `${5}rem`};
+    ${props.$height?.$height &&
+    css`
+      height: ${props.$height?.$height}rem;
+    `}
+    ${props.$height?.$maxHeight &&
+    css`
+      max-height: ${props.$height?.$maxHeight}rem;
+    `}
+    ${props.$height?.$minHeight &&
+    css`
+      min-height: ${props.$height?.$minHeight}rem;
+    `}
+    
 
     /* BORDER */
     ${props.$border?.$border &&

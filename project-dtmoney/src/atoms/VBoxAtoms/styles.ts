@@ -1,15 +1,19 @@
 import { BoxAtoms } from '@atoms/BoxAtoms';
 import styled, { css } from 'styled-components';
 
-export const ContainerTemplatesContainer = styled(BoxAtoms)`
+export const Container = styled(BoxAtoms)`
   ${({ theme, ...props }) => css`
     ${props.$background?.$background &&
     css`
       background-color: ${theme.colors[props.$background.$background]};
     `}
+    ${props.$color?.$color &&
+    css`
+      color: ${theme.colors[props.$color.$color]};
+    `}
 
-    /*POSITION */
-    ${props.$position?.$position &&
+   /*POSITION */
+   ${props.$position?.$position &&
     css`
       position: ${props.$position.$position};
       top: ${`${props.$position.$top}rem`};
@@ -18,17 +22,28 @@ export const ContainerTemplatesContainer = styled(BoxAtoms)`
       bottom: ${`${props.$position.$bottom}rem`};
       z-index: ${props.$position.$zIndex};
     `};
+    /* width: 100%; */
+    height: auto;
 
     /*Flex */
-    display: ${props.$display ? props.$display : 'flex'};
+    ${props.$display
+      ? css`
+          display: ${props.$display};
+        `
+      : css`
+          display: flex;
+        `};
     ${props.$flex?.$flex &&
     css`
       flex: ${props.$flex.$flex};
     `}
-    ${props.$flex?.$direction &&
-    css`
-      flex-direction: ${props.$flex?.$direction};
-    `}
+    ${props.$flex?.$direction
+      ? css`
+          flex-direction: ${props.$flex?.$direction};
+        `
+      : css`
+          flex-direction: column;
+        `}
     ${props.$flex?.$justifyContent &&
     css`
       justify-content: ${props.$flex?.$justifyContent};
@@ -51,15 +66,15 @@ export const ContainerTemplatesContainer = styled(BoxAtoms)`
     `}
     ${props.$flex?.$gap &&
     css`
-      gap: ${props.$flex?.$gap ? props.$flex?.$basis : 0}rem;
+      gap: ${props.$flex?.$gap}rem;
     `}
     ${props.$flex?.$rowGap &&
     css`
-      gap: ${props.$flex?.$rowGap ? props.$flex?.$rowGap : 0}rem;
+      row-gap: ${props.$flex?.$rowGap}rem;
     `}
     ${props.$flex?.$columnGap &&
     css`
-      gap: ${props.$flex?.$columnGap ? props.$flex?.$columnGap : 0}rem;
+      column-gap: ${props.$flex?.$columnGap}rem;
     `}
     ${props.$flex?.$order &&
     css`
@@ -77,19 +92,20 @@ export const ContainerTemplatesContainer = styled(BoxAtoms)`
     css`
       flex-basis: ${props.$flex?.$basis ? props.$flex?.$basis : 0}rem;
     `}
-    /*WIDTH */
-    ${props.$width?.$width
+
+     /*WIDTH */
+     ${props.$width?.$width
       ? css`
           width: ${props.$width?.$width}%;
         `
       : css`
           width: 100%;
         `}
-    ${props.$width?.$width &&
+    ${props.$width?.$maxWidth &&
     css`
       max-width: ${props.$width?.$maxWidth}rem;
     `}
-    ${props.$width?.$width &&
+    ${props.$width?.$minWidth &&
     css`
       min-width: ${props.$width?.$minWidth}rem;
     `}
@@ -97,22 +113,87 @@ export const ContainerTemplatesContainer = styled(BoxAtoms)`
     /*HEIGT */
     ${props.$height?.$height &&
     css`
-      height: ${props.$height?.$height}%;
+      height: ${props.$height?.$height
+        ? `${props.$height.$height}rem`
+        : `100vh`};
+    `}
+    ${props.$height?.$maxHeight &&
+    css`
+      max-height: ${props.$height?.$maxHeight}rem;
     `}
     ${props.$height?.$minHeight &&
     css`
-      max-height: ${props.$height?.$maxHeight
-        ? `${props.$height.$maxHeight}rem`
-        : `${100}%`};
+      min-height: ${props.$height?.$minHeight}rem;
     `}
-    ${props.$height?.$minHeight &&
+ 
+    /* BORDER */
+    ${props.$border?.$border &&
     css`
-      min-height: ${props.$height?.$minHeight
-        ? `${props.$height.$minHeight}rem`
-        : `${5}rem`};
+      border: ${props.$border?.$border.$borderWidth || 1}px
+        ${props.$border?.$border.$borderStyle || 'solid'}
+        ${props.$border?.$border.$borderColor
+          ? theme.color[props.$border.$border.$borderColor]
+          : theme.color.transparent};
     `}
-     /*PADDING */
-     ${props.$spacings?.$p &&
+    ${props.$border?.$borderTop &&
+    css`
+      border-top: ${props.$border?.$borderTop.$borderWidth || 1}px
+        ${props.$border?.$borderTop.$borderStyle || 'solid'}
+        ${props.$border.$borderTop.$borderColor
+          ? theme.color[props.$border.$borderTop.$borderColor]
+          : theme.color.transparent};
+    `}
+    ${props.$border?.$borderLeft &&
+    css`
+      border-left: ${props.$border?.$borderLeft.$borderWidth || 1}px
+        ${props.$border?.$borderLeft.$borderStyle || 'solid'}
+        ${props.$border.$borderLeft.$borderColor
+          ? theme.color[props.$border.$borderLeft.$borderColor]
+          : theme.color.transparent};
+    `}
+    ${props.$border?.$borderRight &&
+    css`
+      border-right: ${props.$border?.$borderRight.$borderWidth || 1}px
+        ${props.$border?.$borderRight.$borderStyle || 'solid'}
+        ${props.$border.$borderRight.$borderColor
+          ? theme.color[props.$border.$borderRight.$borderColor]
+          : theme.color.transparent};
+    `}
+    ${props.$border?.$borderBottom &&
+    css`
+      border-bottom: ${props.$border?.$borderBottom.$borderWidth || 1}px
+        ${props.$border?.$borderBottom.$borderStyle || 'solid'}
+        ${props.$border.$borderBottom.$borderColor
+          ? theme.color[props.$border.$borderBottom.$borderColor]
+          : theme.color.transparent};
+    `}
+    /* BORDER RADIUS */
+    ${props.$border?.$radius
+      ? css`
+          border-radius: ${props.$border?.$radius.$borderWidth}px;
+        `
+      : css`
+          border-radius: 8px;
+        `}
+    ${props.$border?.$radiusTopLeft &&
+    css`
+      border-top-left-radius: ${props.$border?.$radiusTopLeft.$width}rem;
+    `}
+    ${props.$border?.$radiusTopRight &&
+    css`
+      border-top-right-radius: ${props.$border?.$radiusTopRight.$width}rem;
+    `}
+    ${props.$border?.$radiusBottomLeft &&
+    css`
+      border-bottom-left-radius: ${props.$border?.$radiusBottomLeft.$width}rem;
+    `}
+    ${props.$border?.$radiusBottomRight &&
+    css`
+      border-bottom-left-radius: ${props.$border?.$radiusBottomRight.$width}rem;
+    `}
+
+    /*PADDING */
+    ${props.$spacings?.$p &&
     css`
       padding: ${props.$spacings?.$p}rem;
     `}
@@ -195,70 +276,6 @@ export const ContainerTemplatesContainer = styled(BoxAtoms)`
       margin: calc(1 * ${props.$spacings.$mdy}vw) 0rem;
     `}
 
-    /* BORDER */
-    ${props.$border?.$border &&
-    css`
-      border: ${props.$border?.$border.$borderWidth || 1}px
-        ${props.$border?.$border.$borderStyle || 'solid'}
-        ${props.$border.$border.$borderColor
-          ? theme.color[props.$border.$border.$borderColor]
-          : theme.color.transparent};
-    `}
-    ${props.$border?.$borderTop &&
-    css`
-      border-top: ${props.$border?.$borderTop.$borderWidth || 1}px
-        ${props.$border?.$borderTop.$borderStyle || 'solid'}
-        ${props.$border.$borderTop.$borderColor
-          ? theme.color[props.$border.$borderTop.$borderColor]
-          : theme.color.transparent};
-    `}
-    ${props.$border?.$borderLeft &&
-    css`
-      border-left: ${props.$border?.$borderLeft.$borderWidth || 1}px
-        ${props.$border?.$borderLeft.$borderStyle || 'solid'}
-        ${props.$border.$borderLeft.$borderColor
-          ? theme.color[props.$border.$borderLeft.$borderColor]
-          : theme.color.transparent};
-    `}
-    ${props.$border?.$borderRight &&
-    css`
-      border-right: ${props.$border?.$borderRight.$borderWidth || 1}px
-        ${props.$border?.$borderRight.$borderStyle || 'solid'}
-        ${props.$border.$borderRight.$borderColor
-          ? theme.color[props.$border.$borderRight.$borderColor]
-          : theme.color.transparent};
-    `}
-    ${props.$border?.$borderBottom &&
-    css`
-      border-bottom: ${props.$border?.$borderBottom.$borderWidth || 1}px
-        ${props.$border?.$borderBottom.$borderStyle || 'solid'}
-        ${props.$border.$borderBottom.$borderColor
-          ? theme.color[props.$border.$borderBottom.$borderColor]
-          : theme.color.transparent};
-    `}
-    /* BORDER RADIUS */
-    ${props.$border?.$radius &&
-    css`
-      border-radius: ${props.$border?.$radius.$borderWidth || 8}px;
-    `}
-    ${props.$border?.$radiusTopLeft &&
-    css`
-      border-top-left-radius: ${props.$border?.$radiusTopLeft.$width || 8}px;
-    `}
-    ${props.$border?.$radiusTopRight &&
-    css`
-      border-top-right-radius: ${props.$border?.$radiusTopRight.$width || 8}px;
-    `}
-    ${props.$border?.$radiusBottomLeft &&
-    css`
-      border-bottom-left-radius: ${props.$border?.$radiusBottomLeft.$width ||
-      8}px;
-    `}
-    ${props.$border?.$radiusBottomRight &&
-    css`
-      border-bottom-left-radius: ${props.$border?.$radiusBottomRight.$width ||
-      8}px;
-    `}
     /* OVERFLOW */
     ${props.$overflow &&
     css`
@@ -271,8 +288,7 @@ export const ContainerTemplatesContainer = styled(BoxAtoms)`
     ${props.$overflow &&
     css`
       overflow-y: ${props.$overflowY ? props.$overflowY : 'hidden'};
-    `}
-
+    `} 
     /* GRID */
     ${props.$grid &&
     css`

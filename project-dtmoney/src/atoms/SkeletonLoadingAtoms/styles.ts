@@ -17,25 +17,21 @@ export const SketetonContainer = styled.div<typeDefault>`
       background-color: ${theme.color[props.$background.$background]};
     `}
 
-    ${props.$colors?.$colors &&
+    ${props.$colors?.$color &&
     css`
-      color: ${theme.color[props.$colors.$colors]};
+      color: ${theme.color[props.$colors.$color]};
     `}
     ${props.$fonts?.$size &&
     css`
-      font-size: ${props.$fonts?.$size
-        ? theme.fonts.size[props.$fonts?.$size]
-        : theme.fonts.size.m24}rem;
+      font-size: ${props.$fonts?.$size}rem;
     `}
     ${props.$text?.$textAlign &&
     css`
       text-align: ${props.$text?.$textAlign};
     `}
-    ${props.$fonts?.$fontWeigh &&
+    ${props.$fonts?.$weigh &&
     css`
-      font-weight: ${props.$fonts?.$fontWeigh
-        ? props.$fonts?.$fontWeigh
-        : '400'};
+      font-weight: ${props.$fonts?.$weigh ? props.$fonts?.$weigh : '400'};
     `}
     ${props.$fonts?.$family &&
     css`
@@ -49,85 +45,85 @@ export const SketetonContainer = styled.div<typeDefault>`
      /*PADDING */
      ${props.$spacings?.$p &&
     css`
-      padding: ${theme.spacings[props.$spacings?.$p]}rem;
+      padding: ${props.$spacings?.$p}rem;
     `}
     ${props.$spacings?.$pt &&
     css`
-      padding-top: ${theme.spacings[props.$spacings?.$pt]}rem;
+      padding-top: ${props.$spacings?.$pt}rem;
     `}
     ${props.$spacings?.$pl &&
     css`
-      padding-left: ${theme.spacings[props.$spacings?.$pl]}rem;
+      padding-left: ${props.$spacings?.$pl}rem;
     `}
     ${props.$spacings?.$pr &&
     css`
-      padding-right: ${theme.spacings[props.$spacings?.$pr]}rem;
+      padding-right: ${props.$spacings?.$pr}rem;
     `}
     ${props.$spacings?.$pb &&
     css`
-      padding-bottom: ${theme.spacings[props.$spacings?.$pb]}rem;
+      padding-bottom: ${props.$spacings?.$pb}rem;
     `}
     ${props.$spacings?.$px &&
     css`
-      padding: ${theme.spacings[props.$spacings.$px]}rem;
+      padding: ${props.$spacings.$px}rem;
     `}
     ${props.$spacings?.$py &&
     css`
-      padding: 0rem ${theme.spacings[props.$spacings.$py]}rem;
+      padding: 0rem ${props.$spacings.$py}rem;
     `}
     ${props.$spacings?.$pd &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pd]}vw);
+      padding: calc(1 * ${props.$spacings.$pd}vw);
     `}
     ${props.$spacings?.$pdx &&
     css`
-      padding: 0rem calc(1 * ${theme.spacings[props.$spacings.$pdx]}vw);
+      padding: 0rem calc(1 * ${props.$spacings.$pdx}vw);
     `}
     ${props.$spacings?.$pdy &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pdy]}vw) 0rem;
+      padding: calc(1 * ${props.$spacings.$pdy}vw) 0rem;
     `}
 
     /*MARGIN */
     ${props.$spacings?.$m &&
     css`
-      margin: ${theme.spacings[props.$spacings?.$m]}rem;
+      margin: ${props.$spacings?.$m}rem;
     `}
     ${props.$spacings?.$mt &&
     css`
-      margin-top: ${theme.spacings[props.$spacings?.$mt]}rem;
+      margin-top: ${props.$spacings?.$mt}rem;
     `}
     ${props.$spacings?.$ml &&
     css`
-      margin-left: ${theme.spacings[props.$spacings?.$ml]}rem;
+      margin-left: ${props.$spacings?.$ml}rem;
     `}
     ${props.$spacings?.$mr &&
     css`
-      margin-right: ${theme.spacings[props.$spacings?.$mr]}rem;
+      margin-right: ${props.$spacings?.$mr}rem;
     `}
     ${props.$spacings?.$mb &&
     css`
-      margin-bottom: ${theme.spacings[props.$spacings?.$mb]}rem;
+      margin-bottom: ${props.$spacings?.$mb}rem;
     `}
     ${props.$spacings?.$mx &&
     css`
-      margin: ${theme.spacings[props.$spacings.$mx]}rem 0rem;
+      margin: ${props.$spacings.$mx}rem 0rem;
     `}
     ${props.$spacings?.$my &&
     css`
-      margin: 0rem ${theme.spacings[props.$spacings.$my]}rem;
+      margin: 0rem ${props.$spacings.$my}rem;
     `}
     ${props.$spacings?.$md &&
     css`
-      p: calc(1 * ${theme.spacings[props.$spacings.$md]}vw);
+      p: calc(1 * ${props.$spacings.$md}vw);
     `}
     ${props.$spacings?.$mdx &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdx]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdx}vw) 0rem;
     `}
     ${props.$spacings?.$mdy &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdy]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdy}vw) 0rem;
     `}
 
     ${props.$spacings &&
@@ -139,26 +135,26 @@ export const SketetonContainer = styled.div<typeDefault>`
     `}
     
     /*POSITION */
-    position: ${props.$position?.position || 'relative'};
-    ${props.$position?.top &&
+    position: ${props.$position?.$position || 'relative'};
+    ${props.$position?.$top &&
     css`
-      top: ${props.$position.top}px;
+      top: ${props.$position.$top}px;
     `}
-    ${props.$position?.left &&
+    ${props.$position?.$left &&
     css`
-      left: ${props.$position.left}px;
+      left: ${props.$position.$left}px;
     `}
-    ${props.$position?.right &&
+    ${props.$position?.$right &&
     css`
-      right: ${props.$position.right}px;
+      right: ${props.$position.$right}px;
     `}
-    ${props.$position?.bottom &&
+    ${props.$position?.$bottom &&
     css`
-      bottom: ${props.$position.bottom}px;
+      bottom: ${props.$position.$bottom}px;
     `}
-    ${props.$position?.zIndex &&
+    ${props.$position?.$zIndex &&
     css`
-      z-index: ${props.$position.zIndex};
+      z-index: ${props.$position.$zIndex};
     `}
     /* width: 100%; */
     height: auto;
@@ -169,9 +165,9 @@ export const SketetonContainer = styled.div<typeDefault>`
     css`
       flex: ${props.$flex.$flex};
     `}
-    ${props.$flex?.$flexDirection &&
+    ${props.$flex?.$direction &&
     css`
-      flex-direction: ${props.$flex?.$flexDirection};
+      flex-direction: ${props.$flex?.$direction};
     `}
     ${props.$flex?.$justifyContent &&
     css`
@@ -189,9 +185,9 @@ export const SketetonContainer = styled.div<typeDefault>`
     css`
       align-self: ${props.$flex?.$alignSelf};
     `}
-    ${props.$flex?.$flexWrap &&
+    ${props.$flex?.$wrap &&
     css`
-      flex-wrap: ${props.$flex?.$flexWrap};
+      flex-wrap: ${props.$flex?.$wrap};
     `}
     ${props.$flex?.$gap &&
     css`

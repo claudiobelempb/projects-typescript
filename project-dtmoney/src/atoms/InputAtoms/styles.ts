@@ -8,13 +8,20 @@ export const Container = styled.input<InpuType>`
     css`
       background-color: ${theme.colors[props.$background.$background]};
     `}
-    ${props.$colors?.$colors &&
+    ${props.$colors?.$color &&
     css`
-      color: ${theme.colors[props.$colors.$colors]};
+      color: ${theme.colors[props.$colors.$color]};
+    `}
+
+    ${props.$colors?.$placeholder?.$colors &&
+    css`
+      &::placeholder {
+        color: ${theme.colors[props.$colors.$placeholder.$colors]};
+      }
     `}
 
     font-size: ${props.$fonts?.$size
-      ? theme.fonts.size[props.$fonts.$size]
+      ? props.$fonts.$size
       : theme.fonts.size.m16}rem;
 
     /* BORDER */
@@ -89,9 +96,9 @@ export const Container = styled.input<InpuType>`
     css`
       text-align: ${props.$text?.$textAlign};
     `}
-    ${props.$fonts?.$fontWeigh &&
+    ${props.$fonts?.$weigh &&
     css`
-      font-weight: ${props.$fonts.$fontWeigh};
+      font-weight: ${props.$fonts.$weigh};
     `}
     ${props.$fonts?.$family &&
     css`
@@ -256,7 +263,7 @@ export const Container = styled.input<InpuType>`
     `}
     ${props.$spacings?.$mt &&
     css`
-      margin-top: ${theme.spacings[props.$spacings?.$mt]}rem;
+      margin-top: ${props.$spacings?.$mt}rem;
     `}
     ${props.$spacings?.$ml &&
     css`
@@ -290,5 +297,13 @@ export const Container = styled.input<InpuType>`
     css`
       margin: calc(1 * ${theme.spacings[props.$spacings.$mdy]}vw) 0rem;
     `}
+
+    &[type=radio] {
+      background-color: yellow;
+      ${props.$opacity &&
+      css`
+        opacity: ${props.$opacity};
+      `}
+    }
   `}
 `;

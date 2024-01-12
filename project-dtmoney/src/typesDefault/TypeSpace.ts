@@ -1,6 +1,3 @@
-import { css } from 'styled-components';
-import { typeDefault } from './typesDefault';
-
 export type TypeSpacings =
   | 's5'
   | 's8'
@@ -14,22 +11,26 @@ export type TypeSpacings =
   | 'l32'
   | 'x48'
   | 'x64';
-/*
-  calcHeightNegative?: () => FlattenSimpleInterpolation;
-  calcHeightPositive?: () => FlattenSimpleInterpolation;
 
-  calcHeightNegative={props.calcHeightNegative}
-  calcHeightPositive={props.calcHeightPositive}
-  
-  ${props.calcHeightNegative && props.calcHeightNegative()}
-  ${props.calcHeightPositive && props.calcHeightPositive()}
-
-*/
-
-export const calcHeightNegative = ({ ...props }: typeDefault) => css`
-  height: calc(100vh - ${`${props.$height?.$height}rem`});
-`;
-
-export const calcHeightPositive = ({ ...props }: typeDefault) => css`
-  height: calc(100vh + ${`${props.$height?.$height}rem`});
-`;
+export type TYPE_SPACINGS = {
+  $p?: number;
+  $pt?: number;
+  $pr?: number;
+  $pl?: number;
+  $pb?: number;
+  $px?: number;
+  $py?: number;
+  $pd?: number;
+  $pdx?: number;
+  $pdy?: number;
+  $m?: number;
+  $mt?: number;
+  $mr?: number;
+  $ml?: number;
+  $mb?: number;
+  $mx?: number;
+  $my?: number;
+  $md?: number;
+  $mdx?: number;
+  $mdy?: number;
+};

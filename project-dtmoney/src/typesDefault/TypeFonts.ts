@@ -1,3 +1,5 @@
+import { COLOR_PROPS } from './ColorType';
+
 export type TypeFontSize =
   | 's5'
   | 's8'
@@ -46,3 +48,32 @@ export type TypeFontWeigh =
   | '900'
   | 'bold'
   | 'extraBold';
+
+type TYPE_HEIGH_PROPS =
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900'
+  | 'bold'
+  | 'extraBold';
+
+type TYPE_HEIGHT_PROPS = '65%' | '130%' | '160%';
+
+type TYPE_FAMILY_PROPS = 'Roboto' | 'Baloo';
+
+type TYPE_STYLE_PROPS = 'normal' | 'italic' | 'oblique' | 'initial' | 'inherit';
+
+export type TYPE_FONT = {
+  $color?: COLOR_PROPS;
+  $family?: TYPE_FAMILY_PROPS;
+  $style?: TYPE_STYLE_PROPS;
+  $height?: TYPE_HEIGHT_PROPS;
+  $weigh?: TYPE_HEIGH_PROPS;
+  $size?: number;
+  $dinamic?: number;
+};

@@ -1,3 +1,4 @@
+import { TransactionsProvider } from '@contexts/TransactionsContext';
 import { GlobalStyles } from '@themes/GlobalStyles';
 import { ThemeDefault } from '@typesDefault/ThemeDefault';
 import React from 'react';
@@ -7,9 +8,11 @@ import { RouterMain } from './routes';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={ThemeDefault}>
-      <RouterMain />
-      <GlobalStyles />
-    </ThemeProvider>
+    <TransactionsProvider>
+      <ThemeProvider theme={ThemeDefault}>
+        <RouterMain />
+        <GlobalStyles />
+      </ThemeProvider>
+    </TransactionsProvider>
   </React.StrictMode>
 );
