@@ -14,12 +14,12 @@ export const SketetonContainer = styled.div<typeDefault>`
   ${({ theme, ...props }) => css`
     ${props.$background?.$background &&
     css`
-      background-color: ${theme.color[props.$background.$background]};
+      background-color: ${theme.colors[props.$background.$background]};
     `}
 
     ${props.$colors?.$color &&
     css`
-      color: ${theme.color[props.$colors.$color]};
+      color: ${theme.colors[props.$colors.$color]};
     `}
     ${props.$fonts?.$size &&
     css`
@@ -257,40 +257,40 @@ export const SketetonContainer = styled.div<typeDefault>`
       border: ${props.$border?.$border.$borderWidth || 1}px
         ${props.$border?.$border.$borderStyle || 'solid'}
         ${props.$border?.$border.$borderColor
-          ? theme.color[props.$border.$border.$borderColor]
-          : theme.color.transparent};
+          ? theme.colors[props.$border.$border.$borderColor]
+          : theme.colors.transparent};
     `}
     ${props.$border?.$borderTop &&
     css`
       border-top: ${props.$border?.$borderTop.$borderWidth || 1}px
         ${props.$border?.$borderTop.$borderStyle || 'solid'}
         ${props.$border.$borderTop.$borderColor
-          ? theme.color[props.$border.$borderTop.$borderColor]
-          : theme.color.transparent};
+          ? theme.colors[props.$border.$borderTop.$borderColor]
+          : theme.colors.transparent};
     `}
     ${props.$border?.$borderLeft &&
     css`
       border-left: ${props.$border?.$borderLeft.$borderWidth || 1}px
         ${props.$border?.$borderLeft.$borderStyle || 'solid'}
         ${props.$border.$borderLeft.$borderColor
-          ? theme.color[props.$border.$borderLeft.$borderColor]
-          : theme.color.transparent};
+          ? theme.colors[props.$border.$borderLeft.$borderColor]
+          : theme.colors.transparent};
     `}
     ${props.$border?.$borderRight &&
     css`
       border-right: ${props.$border?.$borderRight.$borderWidth || 1}px
         ${props.$border?.$borderRight.$borderStyle || 'solid'}
         ${props.$border.$borderRight.$borderColor
-          ? theme.color[props.$border.$borderRight.$borderColor]
-          : theme.color.transparent};
+          ? theme.colors[props.$border.$borderRight.$borderColor]
+          : theme.colors.transparent};
     `}
     ${props.$border?.$borderBottom &&
     css`
       border-bottom: ${props.$border?.$borderBottom.$borderWidth || 1}px
         ${props.$border?.$borderBottom.$borderStyle || 'solid'}
         ${props.$border.$borderBottom.$borderColor
-          ? theme.color[props.$border.$borderBottom.$borderColor]
-          : theme.color.transparent};
+          ? theme.colors[props.$border.$borderBottom.$borderColor]
+          : theme.colors.transparent};
     `}
     /* BORDER RADIUS */
     ${props.$border?.$radius
@@ -343,12 +343,12 @@ export const SketetonContent = styled(ContentAtoms)`
     opacity: 0.6;
     border-radius: 8px;
     cursor: progress;
-    background: ${theme.color[props.$background?.$background || 'yellow700']};
+    background: ${theme.colors[props.$background?.$background || 'yellow700']};
     background: linear-gradient(
       90deg,
-      ${theme.color.purple700} 0%,
-      ${theme.color.purple100} 50%,
-      ${theme.color.purple700} 100%
+      ${theme.colors[props.$background?.$background || 'gray100']} 0%,
+      ${theme.colors[props.$background?.$background || 'gray100']} 50%,
+      ${theme.colors[props.$background?.$background || 'gray100']} 100%
     );
     background-size: 400% 400%;
 

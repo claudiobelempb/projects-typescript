@@ -37,9 +37,9 @@ export const DialogOverlay = styled(Dialog.Overlay)<typeDefault>`
     css`
       flex: ${props.$flex.$flex};
     `}
-    ${props.$flex?.$flexDirection &&
+    ${props.$flex?.$direction &&
     css`
-      flex-direction: ${props.$flex?.$flexDirection};
+      flex-direction: ${props.$flex?.$direction};
     `}
     ${props.$flex?.$justifyContent &&
     css`
@@ -57,9 +57,9 @@ export const DialogOverlay = styled(Dialog.Overlay)<typeDefault>`
     css`
       align-self: ${props.$flex?.$alignSelf};
     `}
-    ${props.$flex?.$flexWrap &&
+    ${props.$flex?.$wrap &&
     css`
-      flex-wrap: ${props.$flex?.$flexWrap};
+      flex-wrap: ${props.$flex?.$wrap};
     `}
     ${props.$flex?.$gap &&
     css`
@@ -192,49 +192,49 @@ export const DialogOverlay = styled(Dialog.Overlay)<typeDefault>`
     /*PADDING */
     ${props.$spacings?.$p &&
     css`
-      padding: ${theme.spacings[props.$spacings?.$p]}rem;
+      padding: ${props.$spacings?.$p}rem;
     `}
     ${props.$spacings?.$pt &&
     css`
-      padding-top: ${theme.spacings[props.$spacings?.$pt]}rem;
+      padding-top: ${props.$spacings?.$pt}rem;
     `}
     ${props.$spacings?.$pl &&
     css`
-      padding-left: ${theme.spacings[props.$spacings?.$pl]}rem;
+      padding-left: ${props.$spacings?.$pl}rem;
     `}
     ${props.$spacings?.$pr &&
     css`
-      padding-right: ${theme.spacings[props.$spacings?.$pr]}rem;
+      padding-right: ${props.$spacings?.$pr}rem;
     `}
     ${props.$spacings?.$pb &&
     css`
-      padding-bottom: ${theme.spacings[props.$spacings?.$pb]}rem;
+      padding-bottom: ${props.$spacings?.$pb}rem;
     `}
     ${props.$spacings?.$px &&
     css`
-      padding: ${theme.spacings[props.$spacings.$px]}rem;
+      padding: ${props.$spacings.$px}rem;
     `}
     ${props.$spacings?.$py &&
     css`
-      padding: 0rem ${theme.spacings[props.$spacings.$py]}rem;
+      padding: 0rem ${props.$spacings.$py}rem;
     `}
     ${props.$spacings?.$pd &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pd]}vw);
+      padding: calc(1 * ${props.$spacings.$pd}vw);
     `}
     ${props.$spacings?.$pdx &&
     css`
-      padding: 0rem calc(1 * ${theme.spacings[props.$spacings.$pdx]}vw);
+      padding: 0rem calc(1 * ${props.$spacings.$pdx}vw);
     `}
     ${props.$spacings?.$pdy &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pdy]}vw) 0rem;
+      padding: calc(1 * ${props.$spacings.$pdy}vw) 0rem;
     `}
 
     /*MARGIN */
     ${props.$spacings?.$m &&
     css`
-      margin: ${theme.spacings[props.$spacings?.$m]}rem;
+      margin: ${props.$spacings?.$m}rem;
     `}
     ${props.$spacings?.$mt &&
     css`
@@ -242,35 +242,35 @@ export const DialogOverlay = styled(Dialog.Overlay)<typeDefault>`
     `}
     ${props.$spacings?.$ml &&
     css`
-      margin-left: ${theme.spacings[props.$spacings?.$ml]}rem;
+      margin-left: ${props.$spacings?.$ml}rem;
     `}
     ${props.$spacings?.$mr &&
     css`
-      margin-right: ${theme.spacings[props.$spacings?.$mr]}rem;
+      margin-right: ${props.$spacings?.$mr}rem;
     `}
     ${props.$spacings?.$mb &&
     css`
-      margin-bottom: ${theme.spacings[props.$spacings?.$mb]}rem;
+      margin-bottom: ${props.$spacings?.$mb}rem;
     `}
     ${props.$spacings?.$mx &&
     css`
-      margin: ${theme.spacings[props.$spacings.$mx]}rem 0rem;
+      margin: ${props.$spacings.$mx}rem 0rem;
     `}
     ${props.$spacings?.$my &&
     css`
-      margin: 0rem ${theme.spacings[props.$spacings.$my]}rem;
+      margin: 0rem ${props.$spacings.$my}rem;
     `}
     ${props.$spacings?.$md &&
     css`
-      p: calc(1 * ${theme.spacings[props.$spacings.$md]}vw);
+      p: calc(1 * ${props.$spacings.$md}vw);
     `}
     ${props.$spacings?.$mdx &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdx]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdx}vw) 0rem;
     `}
     ${props.$spacings?.$mdy &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdy]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdy}vw) 0rem;
     `}
 
     /* OVERFLOW */
@@ -339,7 +339,7 @@ export const DialogOverlay = styled(Dialog.Overlay)<typeDefault>`
 export const DialogContent = styled(Dialog.Content)<typeDefault>`
   ${({ theme, ...props }) => css`
     max-width: 53.5rem;
-    min-height: 53.5rem;
+    min-height: max-content;
     border-radius: 6px;
     padding: 4.8rem;
     background-color: ${theme.colors.gray800};
@@ -397,9 +397,9 @@ export const DialogContent = styled(Dialog.Content)<typeDefault>`
     css`
       align-self: ${props.$flex?.$alignSelf};
     `}
-    ${props.$flex?.$flexWrap &&
+    ${props.$flex?.$wrap &&
     css`
-      flex-wrap: ${props.$flex?.$flexWrap};
+      flex-wrap: ${props.$flex?.$wrap};
     `}
     ${props.$flex?.$gap &&
     css`
@@ -532,49 +532,49 @@ export const DialogContent = styled(Dialog.Content)<typeDefault>`
     /*PADDING */
     ${props.$spacings?.$p &&
     css`
-      padding: ${theme.spacings[props.$spacings?.$p]}rem;
+      padding: ${props.$spacings?.$p}rem;
     `}
     ${props.$spacings?.$pt &&
     css`
-      padding-top: ${theme.spacings[props.$spacings?.$pt]}rem;
+      padding-top: ${props.$spacings?.$pt}rem;
     `}
     ${props.$spacings?.$pl &&
     css`
-      padding-left: ${theme.spacings[props.$spacings?.$pl]}rem;
+      padding-left: ${props.$spacings?.$pl}rem;
     `}
     ${props.$spacings?.$pr &&
     css`
-      padding-right: ${theme.spacings[props.$spacings?.$pr]}rem;
+      padding-right: ${props.$spacings?.$pr}rem;
     `}
     ${props.$spacings?.$pb &&
     css`
-      padding-bottom: ${theme.spacings[props.$spacings?.$pb]}rem;
+      padding-bottom: ${props.$spacings?.$pb}rem;
     `}
     ${props.$spacings?.$px &&
     css`
-      padding: ${theme.spacings[props.$spacings.$px]}rem;
+      padding: ${props.$spacings.$px}rem;
     `}
     ${props.$spacings?.$py &&
     css`
-      padding: 0rem ${theme.spacings[props.$spacings.$py]}rem;
+      padding: 0rem ${props.$spacings.$py}rem;
     `}
     ${props.$spacings?.$pd &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pd]}vw);
+      padding: calc(1 * ${props.$spacings.$pd}vw);
     `}
     ${props.$spacings?.$pdx &&
     css`
-      padding: 0rem calc(1 * ${theme.spacings[props.$spacings.$pdx]}vw);
+      padding: 0rem calc(1 * ${props.$spacings.$pdx}vw);
     `}
     ${props.$spacings?.$pdy &&
     css`
-      padding: calc(1 * ${theme.spacings[props.$spacings.$pdy]}vw) 0rem;
+      padding: calc(1 * ${props.$spacings.$pdy}vw) 0rem;
     `}
 
     /*MARGIN */
     ${props.$spacings?.$m &&
     css`
-      margin: ${theme.spacings[props.$spacings?.$m]}rem;
+      margin: ${props.$spacings?.$m}rem;
     `}
     ${props.$spacings?.$mt &&
     css`
@@ -582,35 +582,35 @@ export const DialogContent = styled(Dialog.Content)<typeDefault>`
     `}
     ${props.$spacings?.$ml &&
     css`
-      margin-left: ${theme.spacings[props.$spacings?.$ml]}rem;
+      margin-left: ${props.$spacings?.$ml}rem;
     `}
     ${props.$spacings?.$mr &&
     css`
-      margin-right: ${theme.spacings[props.$spacings?.$mr]}rem;
+      margin-right: ${props.$spacings?.$mr}rem;
     `}
     ${props.$spacings?.$mb &&
     css`
-      margin-bottom: ${theme.spacings[props.$spacings?.$mb]}rem;
+      margin-bottom: ${props.$spacings?.$mb}rem;
     `}
     ${props.$spacings?.$mx &&
     css`
-      margin: ${theme.spacings[props.$spacings.$mx]}rem 0rem;
+      margin: ${props.$spacings.$mx}rem 0rem;
     `}
     ${props.$spacings?.$my &&
     css`
-      margin: 0rem ${theme.spacings[props.$spacings.$my]}rem;
+      margin: 0rem ${props.$spacings.$my}rem;
     `}
     ${props.$spacings?.$md &&
     css`
-      p: calc(1 * ${theme.spacings[props.$spacings.$md]}vw);
+      p: calc(1 * ${props.$spacings.$md}vw);
     `}
     ${props.$spacings?.$mdx &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdx]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdx}vw) 0rem;
     `}
     ${props.$spacings?.$mdy &&
     css`
-      margin: calc(1 * ${theme.spacings[props.$spacings.$mdy]}vw) 0rem;
+      margin: calc(1 * ${props.$spacings.$mdy}vw) 0rem;
     `}
 
     /* OVERFLOW */

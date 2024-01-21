@@ -99,7 +99,7 @@ export const GlobalStyles = createGlobalStyle`
       display: flex;
       flex: 1 1;
       flex-direction: column;
-      height: 100vh;
+      /* height: 100vh; */
     }
 
     ol,

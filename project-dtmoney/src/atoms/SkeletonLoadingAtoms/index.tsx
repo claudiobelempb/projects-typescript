@@ -1,15 +1,19 @@
 import { typeDefault } from '@typesDefault/typesDefault';
-import {} from 'react';
 import { SketetonContainer, SketetonContent } from './styles';
 
-export function SkeletonLoadingAtoms({ ...props }: typeDefault) {
+export function SkeletonLoadingAtoms({
+  $spacings,
+  $lines,
+  $height,
+  $background
+}: typeDefault) {
   return (
-    <SketetonContainer $spacings={props.$spacings || 6} {...props}>
-      {[...Array(props.$lines || 5)].map((_, index) => (
+    <SketetonContainer $spacings={$spacings}>
+      {[...Array($lines || 5)].map((_, index) => (
         <SketetonContent
-          $background={{ $background: 'green100' }}
+          $background={$background}
           key={index}
-          $height={props.$height}
+          $height={$height}
           $border={{ $radius: { $borderWidth: 5 } }}
         ></SketetonContent>
       ))}

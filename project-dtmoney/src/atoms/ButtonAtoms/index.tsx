@@ -15,6 +15,7 @@ export const ButtonAtoms = forwardRef<HTMLButtonElement, ButtonProps>(
           {props.$buttom?.$title && (
             <TextAtoms>{props.$buttom?.$title}</TextAtoms>
           )}
+          {props.children}
         </Container>
       </>
     );

@@ -85,12 +85,17 @@ export const Container = styled.button<TypeButtom>`
       background-color: ${theme.colors[
         props.$buttom?.$background?.$color?.$hover || 'transparent'
       ]};
+      transition: background-color 0.2s;
     }
 
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
+      background-color: ${theme.colors[
+        props.$buttom?.$background?.$color?.$hover || 'transparent'
+      ]};
     }
+
     /* 
     &[data-state='unchecked']:hover {
       color: ${theme.colors.white};

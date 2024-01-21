@@ -87,6 +87,8 @@ export type TypeButtom = {
     /**BORDER */
     $border?: TYPE_BORDER;
 
+    $disabled?: boolean;
+
     // OVERFLOW
     $overflow?: 'scroll' | 'hidden' | 'auto' | 'cli' | 'visible';
     $overflowX?: 'scroll' | 'hidden' | 'auto' | 'cli' | 'visible';

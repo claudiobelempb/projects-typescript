@@ -152,6 +152,7 @@ export const TableAtomsTemplatesContainer = styled.table<typeDefault>`
 
     tbody {
       padding: 8px 0px 8px 0px;
+      height: 100%;
       tr {
         width: 100%;
         /* border-bottom: 1px solid #ccc; */

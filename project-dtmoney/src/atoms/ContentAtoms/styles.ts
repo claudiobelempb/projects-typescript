@@ -268,15 +268,15 @@ export const ContentTemplatesContainer = styled(BoxAtoms)`
     /* OVERFLOW */
     ${props.$overflow &&
     css`
-      overflow: ${props.$overflow ? props.$overflow : 'hidden'};
+      overflow: ${props.$overflow};
     `}
     ${props.$overflow &&
     css`
-      overflow-x: ${props.$overflowX ? props.$overflowX : 'hidden'};
+      overflow-x: ${props.$overflowX};
     `}
     ${props.$overflow &&
     css`
-      overflow-y: ${props.$overflowY ? props.$overflowY : 'hidden'};
+      overflow-y: ${props.$overflowY};
     `}
     /* GRID */
     ${props.$grid &&
@@ -324,5 +324,9 @@ export const ContentTemplatesContainer = styled(BoxAtoms)`
     css`
       grid-column: container-start / container-end;
     `}
+
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   `}
 `;

@@ -56,9 +56,11 @@ export const InputAtoms = forwardRef(function TextInput(
             {...props}
           />
 
-          {$optional?.$error?.message ? (
-            <TextAtoms>{$optional?.$error?.message}</TextAtoms>
-          ) : null}
+          {props.$validation && (
+            <TextAtoms $colors={props.$validation.color}>
+              {props.$validation.$mensagem}
+            </TextAtoms>
+          )}
         </>
       );
     case 'number':

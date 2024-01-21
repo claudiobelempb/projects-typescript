@@ -27,6 +27,12 @@ export type typeDefault = {
   children?: ReactNode;
   $child?: number;
   $lines?: number;
+  $variant?: 'small' | 'medium' | 'large';
+
+  $validation?: {
+    $mensagem?: string;
+    color?: COLOR_TYPE_PROPS;
+  };
 
   $icons?: TYPE_ICON;
 

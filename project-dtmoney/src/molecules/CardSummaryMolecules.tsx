@@ -2,11 +2,12 @@ import { HBoxAtoms } from '@atoms/HBoxAtoms';
 import { IconAtom } from '@atoms/IconAtoms';
 import { TextAtoms } from '@atoms/TextAtoms';
 import { typeDefault } from '@typesDefault/typesDefault';
+import { priceFormatter } from '@utils/formatter';
 import { VBoxAtoms } from './../atoms/VBoxAtoms/index';
 
 type Props = typeDefault & {
   $title: string;
-  $value: string;
+  $value: number;
 };
 export function CardSummaryMolecules({ ...props }: Props) {
   return (
@@ -17,7 +18,7 @@ export function CardSummaryMolecules({ ...props }: Props) {
       </HBoxAtoms>
       <VBoxAtoms>
         <TextAtoms $fonts={{ $size: 3.2, $weigh: '700', $color: 'gray100' }}>
-          {props.$value}
+          {priceFormatter.format(props.$value)}
         </TextAtoms>
       </VBoxAtoms>
     </VBoxAtoms>
