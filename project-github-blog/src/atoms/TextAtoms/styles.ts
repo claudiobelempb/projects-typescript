@@ -25,11 +25,7 @@ export const TextAtomsContainer = styled.p<typeDefault>`
     css`
       font-size: ${props.$fonts?.$size}rem;
     `}
-    ${props.$text?.$textAlign &&
-    css`
-      text-align: ${props.$text?.$textAlign};
-    `}
-
+ 
     &[role='alert'] {
       border-color: ${({ theme }) => theme.colors.green100};
     }

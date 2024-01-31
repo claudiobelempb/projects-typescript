@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div<TypeIcon>`
   ${({ theme, ...props }) => css`
+    display: flex;
     /*POSITION */
   `}
 `;

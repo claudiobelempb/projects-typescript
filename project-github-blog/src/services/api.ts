@@ -9,7 +9,7 @@ const api = (config: AxiosRequestConfig) => {
       }
     : { ...config.headers };
 
-  return Axios({ ...config, baseURL: 'http://localhost:3333', headers });
+  return Axios({ ...config, baseURL: 'https://api.github.com', headers });
 };
 
 export { api };

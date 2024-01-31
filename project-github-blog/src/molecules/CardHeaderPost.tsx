@@ -6,12 +6,22 @@ import { IconAtom } from '@atoms/IconAtoms';
 import { NavLinkAtoms } from '@atoms/NavLinkAtoms';
 import { TextAtoms } from '@atoms/TextAtoms';
 import { VBoxAtoms } from '@atoms/VBoxAtoms';
+import { relativeDateFormatter } from '@utils/formatter';
+import { REPO_DTO } from 'dto/repoDTO';
 
-export function CardHeaderPost() {
+type Props = {
+  postItem: REPO_DTO;
+};
+export function CardHeaderPost({ postItem }: Props) {
+  const formattedDate = relativeDateFormatter(postItem.created_at);
+
   return (
     <ContainerAtoms $spacings={{ $mb: 7.2 }}>
       <ContentAtoms $background='card500' $spacings={{ $mt: -10, $p: 2 }}>
-        <HBoxAtoms $flex={{ $columnGap: 2, $alingItems: 'center' }}>
+        <HBoxAtoms
+          $flex={{ $columnGap: 2, $alingItems: 'center' }}
+          $width={{ $width: 100 }}
+        >
           <VBoxAtoms>
             <HBoxAtoms>
               <NavLinkAtoms
@@ -38,7 +48,7 @@ export function CardHeaderPost() {
                 </TextAtoms>
               </NavLinkAtoms>
               <NavLinkAtoms
-                to='/'
+                to={postItem.url}
                 $flex={{
                   $direction: 'row',
                   $alingItems: 'center',
@@ -46,8 +56,6 @@ export function CardHeaderPost() {
                 }}
                 $color='blue500'
                 $hover='white'
-                // $color_fill='blue500'
-                // $color_fill_hover='white'
                 $spacings={{ $p: 1 }}
               >
                 <TextAtoms
@@ -62,50 +70,42 @@ export function CardHeaderPost() {
               </NavLinkAtoms>
             </HBoxAtoms>
             <VBoxAtoms $spacings={{ $mb: 2.4 }}>
-              <HeadingAtoms as='h2'>
-                JavaScript data types and data structures
-              </HeadingAtoms>
+              <HeadingAtoms as='h2'>{postItem.title}</HeadingAtoms>
             </VBoxAtoms>
             <HBoxAtoms $flex={{ $justifyContent: 'flex-start', $columnGap: 2 }}>
-              <NavLinkAtoms
-                to='/'
+              <HBoxAtoms
                 $flex={{
-                  $direction: 'row',
+                  $justifyContent: 'flex-start',
                   $alingItems: 'center',
                   $columnGap: 1
                 }}
-                $color='subtitle'
-                $hover='white'
+                $width={{ $width: 0 }}
               >
                 <IconAtom $type='GithubLogo' />
-                <TextAtoms>claudiobelempb</TextAtoms>
-              </NavLinkAtoms>
-              <NavLinkAtoms
-                to='/'
+                <TextAtoms>{postItem.user?.login}</TextAtoms>
+              </HBoxAtoms>
+              <HBoxAtoms
                 $flex={{
-                  $direction: 'row',
+                  $justifyContent: 'flex-start',
                   $alingItems: 'center',
                   $columnGap: 1
                 }}
-                $color='subtitle'
-                $hover='white'
+                $width={{ $width: 0 }}
               >
-                <IconAtom $type='Buildings' />
-                <TextAtoms>surb</TextAtoms>
-              </NavLinkAtoms>
-              <NavLinkAtoms
-                to='/'
+                <IconAtom $type='CalendarCheck' />
+                <TextAtoms>{formattedDate}</TextAtoms>
+              </HBoxAtoms>
+              <HBoxAtoms
                 $flex={{
-                  $direction: 'row',
+                  $justifyContent: 'flex-start',
                   $alingItems: 'center',
                   $columnGap: 1
                 }}
-                $color='subtitle'
-                $hover='white'
+                $width={{ $width: 0 }}
               >
                 <IconAtom $type='ChatCircle' />
-                <TextAtoms>32 seguidores</TextAtoms>
-              </NavLinkAtoms>
+                <TextAtoms>{postItem.comments} comentários</TextAtoms>
+              </HBoxAtoms>
             </HBoxAtoms>
           </VBoxAtoms>
         </HBoxAtoms>

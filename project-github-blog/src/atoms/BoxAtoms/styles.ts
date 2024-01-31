@@ -85,13 +85,10 @@ export const BoxTemplatesContainer = styled.div<TYPE_BOX>`
     `}
 
      /*WIDTH */
-     ${props.$width?.$width
-      ? css`
-          width: ${props.$width?.$width}%;
-        `
-      : css`
-          width: 100%;
-        `}
+     ${props.$width?.$width &&
+    css`
+      width: ${props.$width?.$width}%;
+    `};
     ${props.$width?.$maxWidth &&
     css`
       max-width: ${props.$width?.$maxWidth}rem;

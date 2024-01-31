@@ -8,14 +8,13 @@ export function HeaderMolecules() {
   return (
     <ContainerAtoms
       $background_image={{
-        url: BackgrounImage
+        url: BackgrounImage,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
       }}
     >
-      <ContentAtoms>
-        <HBoxAtoms
-          $flex={{ $justifyContent: 'center' }}
-          $height={{ $minHeight: 29 }}
-        >
+      <ContentAtoms $flex={{ $justifyContent: 'center' }}>
+        <HBoxAtoms $height={{ $minHeight: 29 }}>
           <ImageAtoms src={BrandImg} $spacings={{ $mt: -5 }} />
         </HBoxAtoms>
       </ContentAtoms>

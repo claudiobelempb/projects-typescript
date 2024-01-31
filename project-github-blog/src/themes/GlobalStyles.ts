@@ -9,6 +9,19 @@ export const GlobalStyles = createGlobalStyle`
       padding: 0;
       margin: 0;
       box-sizing: border-box;
+
+      ::-webkit-scrollbar {
+        width: 0%.45rem;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: ${theme.colors.purple100};
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: ${theme.colors.text};
+        border-radius: 999px;
+      }
     }
     html {
       font-weight: 600;
@@ -18,6 +31,7 @@ export const GlobalStyles = createGlobalStyle`
 
       min-height: 100vh;
     }
+
     body {
       font-size: ${theme.fonts.size.m16}rem;
       font-weight: 400;

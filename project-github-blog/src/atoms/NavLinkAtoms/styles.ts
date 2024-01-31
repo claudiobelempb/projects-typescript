@@ -246,7 +246,7 @@ export const Container = styled(NavLink)<typeDefault>`
     `};
     ${props.$width?.$minWidth &&
     css`
-      min-width: ${props.$width.$minWidth}rem;
+      min-width: ${props.$width.$minWidth}%;
     `};
 
     /*HEIGHT */
@@ -260,7 +260,7 @@ export const Container = styled(NavLink)<typeDefault>`
     `}
     ${props.$height?.$minHeight &&
     css`
-      min-height: ${props.$height?.$minHeight}%;
+      min-height: ${props.$height?.$minHeight}rem;
     `}
     
 

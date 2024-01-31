@@ -1,3 +1,4 @@
+import moment from 'moment';
 export const dateFormatter = new Intl.DateTimeFormat('pb-BR', {
   day: '2-digit',
   month: 'numeric',
@@ -14,3 +15,7 @@ export const priceFormatter = new Intl.NumberFormat('pt-BR', {
   style: 'currency',
   currency: 'BRL'
 });
+
+export function relativeDateFormatter(date: string) {
+  return moment(date).fromNow();
+}

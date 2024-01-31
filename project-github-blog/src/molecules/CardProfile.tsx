@@ -8,11 +8,18 @@ import { NavLinkAtoms } from '@atoms/NavLinkAtoms';
 import { TextAtoms } from '@atoms/TextAtoms';
 import { VBoxAtoms } from '@atoms/VBoxAtoms';
 
-export function CardProfile() {
+type Props = {
+  user: GITHUB_USER_DTO;
+};
+
+export function CardProfile({ user }: Props) {
   return (
     <ContainerAtoms $spacings={{ $mb: 7.2 }}>
       <ContentAtoms $background='card500' $spacings={{ $mt: -10, $p: 2 }}>
-        <HBoxAtoms $flex={{ $columnGap: 2, $alingItems: 'center' }}>
+        <HBoxAtoms
+          $flex={{ $columnGap: 2, $alingItems: 'center' }}
+          $width={{ $width: 100 }}
+        >
           <HBoxAtoms
             $width={{ $maxWidth: 14.8 }}
             $height={{ $minHeight: 14.8 }}
@@ -22,15 +29,15 @@ export function CardProfile() {
               $width={{ $maxWidth: 14.8 }}
               $height={{ $minHeight: 14.8 }}
               // $spacings={{ $pb: 6 }}
-              src='https://avatars.githubusercontent.com/u/9382100?v=4'
+              src={user.avatar_url}
             />
           </HBoxAtoms>
 
           <VBoxAtoms>
             <HBoxAtoms>
-              <HeadingAtoms as='h2'>Claudio Cardoso</HeadingAtoms>
+              <HeadingAtoms as='h2'>{user.name}</HeadingAtoms>
               <NavLinkAtoms
-                to='/'
+                to={user.html_url}
                 $flex={{
                   $direction: 'row',
                   $alingItems: 'center',
@@ -54,52 +61,40 @@ export function CardProfile() {
               </NavLinkAtoms>
             </HBoxAtoms>
             <VBoxAtoms $spacings={{ $mb: 2.4 }}>
-              <TextAtoms>
-                Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-                viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-                volutpat pulvinar vel mass.
-              </TextAtoms>
+              <TextAtoms>{user.bio}</TextAtoms>
             </VBoxAtoms>
             <HBoxAtoms $flex={{ $justifyContent: 'flex-start', $columnGap: 2 }}>
-              <NavLinkAtoms
-                to='/'
+              <HBoxAtoms
                 $flex={{
-                  $direction: 'row',
+                  $justifyContent: 'flex-start',
                   $alingItems: 'center',
                   $columnGap: 1
                 }}
-                $color='subtitle'
-                $hover='white'
               >
                 <IconAtom $type='GithubLogo' />
-                <TextAtoms>claudiobelempb</TextAtoms>
-              </NavLinkAtoms>
-              <NavLinkAtoms
-                to='/'
+                <TextAtoms>{user.login}</TextAtoms>
+              </HBoxAtoms>
+              <HBoxAtoms
                 $flex={{
-                  $direction: 'row',
+                  $justifyContent: 'flex-start',
                   $alingItems: 'center',
                   $columnGap: 1
                 }}
-                $color='subtitle'
-                $hover='white'
               >
                 <IconAtom $type='Buildings' />
-                <TextAtoms>surb</TextAtoms>
-              </NavLinkAtoms>
-              <NavLinkAtoms
-                to='/'
+                <TextAtoms>{user.company}</TextAtoms>
+              </HBoxAtoms>
+              <HBoxAtoms
                 $flex={{
-                  $direction: 'row',
+                  $justifyContent: 'flex-start',
                   $alingItems: 'center',
                   $columnGap: 1
                 }}
-                $color='subtitle'
-                $hover='white'
+                $width={{ $width: 0 }}
               >
                 <IconAtom $type='ChatCircle' />
-                <TextAtoms>32 seguidores</TextAtoms>
-              </NavLinkAtoms>
+                <TextAtoms>{user.following} seguidores</TextAtoms>
+              </HBoxAtoms>
             </HBoxAtoms>
           </VBoxAtoms>
         </HBoxAtoms>

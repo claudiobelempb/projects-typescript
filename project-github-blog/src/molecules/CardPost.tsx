@@ -2,17 +2,20 @@ import { ContainerAtoms } from '@atoms/ContainerAtoms';
 import { ContentAtoms } from '@atoms/ContentAtoms';
 import { CardPostItem } from './CardPostItem';
 
-export function CardPost() {
+type Props = {
+  items: ITEM_DTO[];
+};
+
+export function CardPost({ items }: Props) {
   return (
     <ContainerAtoms>
       <ContentAtoms
         $flex={{ $columnGap: 1.6 }}
         $grid={{ $grid: 'grid', $gridTemplateColumns: { $repeatColumns: 2 } }}
       >
-        <CardPostItem />
-        <CardPostItem />
-        <CardPostItem />
-        <CardPostItem />
+        {items.map(item => (
+          <CardPostItem key={item.id} item={item} />
+        ))}
       </ContentAtoms>
     </ContainerAtoms>
   );

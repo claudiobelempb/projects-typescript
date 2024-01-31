@@ -7,7 +7,10 @@ import { PostPage } from '@pages/PostPage';
 export function MainRoutes() {
   return useRoutes([
     { path: '/', element: <HomePage /> },
-    { path: '/posts', element: <PostPage /> },
+    {
+      path: `/posts/:user/:repo/:number`,
+      element: <PostPage />
+    },
     // { path: '/dashboard', element: <DashBoardPage /> },
     // { path: '/repositories/:login/:name', element: <RepoPage /> },
     {

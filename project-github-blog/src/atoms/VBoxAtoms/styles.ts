@@ -107,7 +107,7 @@ export const Container = styled(BoxAtoms)`
     `}
     ${props.$width?.$minWidth &&
     css`
-      min-width: ${props.$width?.$minWidth}rem;
+      min-width: ${props.$width?.$minWidth}%;
     `}
     
     /*HEIGT */
@@ -119,7 +119,7 @@ export const Container = styled(BoxAtoms)`
     `}
     ${props.$height?.$maxHeight &&
     css`
-      max-height: ${props.$height?.$maxHeight}rem;
+      max-height: ${props.$height?.$maxHeight}%;
     `}
     ${props.$height?.$minHeight &&
     css`
