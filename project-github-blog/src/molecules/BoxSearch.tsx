@@ -40,7 +40,7 @@ export function BoxSearch() {
                 {...register('query')}
                 $background='input'
                 type='search'
-                placeholder='Buscar conteúdo'
+                placeholder='exemplo: text repo:userName/repo issues 1'
                 $color='text'
               />
             </HBoxAtoms>
